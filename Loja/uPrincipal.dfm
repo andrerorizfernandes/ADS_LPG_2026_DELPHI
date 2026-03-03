@@ -3,7 +3,7 @@ object frmPrincipal: TfrmPrincipal
   Top = 0
   BorderStyle = bsSingle
   Caption = 'Sistema de loja'
-  ClientHeight = 441
+  ClientHeight = 461
   ClientWidth = 624
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

@@ -32,8 +32,6 @@ uses
 
 {$R *.dfm}
 
-{ TfrmPrincipal }
-
 procedure TfrmPrincipal.Carro1Click(Sender: TObject);
 begin
   ExibirCarro;
