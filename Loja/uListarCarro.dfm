@@ -21,7 +21,6 @@ object frmListarCarro: TfrmListarCarro
     Height = 29
     Align = alBottom
     TabOrder = 0
-    ExplicitWidth = 586
     object btnExcluir: TButton
       Left = 636
       Top = 1
@@ -30,7 +29,7 @@ object frmListarCarro: TfrmListarCarro
       Align = alRight
       Caption = 'E&xcluir'
       TabOrder = 0
-      ExplicitLeft = 504
+      OnClick = btnExcluirClick
     end
     object btnEditar: TButton
       Left = 555
@@ -40,7 +39,6 @@ object frmListarCarro: TfrmListarCarro
       Align = alRight
       Caption = '&Editar'
       TabOrder = 1
-      ExplicitLeft = 423
     end
     object btnInserir: TButton
       Left = 474
@@ -50,7 +48,6 @@ object frmListarCarro: TfrmListarCarro
       Align = alRight
       Caption = '&Inserir'
       TabOrder = 2
-      ExplicitLeft = 342
     end
   end
   object dbgListarCarro: TDBGrid
@@ -74,6 +71,7 @@ object frmListarCarro: TfrmListarCarro
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = [fsBold]
+    OnDrawColumnCell = dbgListarCarroDrawColumnCell
     Columns = <
       item
         Expanded = False

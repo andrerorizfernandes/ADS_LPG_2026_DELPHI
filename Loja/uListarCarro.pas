@@ -15,8 +15,13 @@ type
     btnInserir: TButton;
     dbgListarCarro: TDBGrid;
     procedure FormActivate(Sender: TObject);
+    procedure dbgListarCarroDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure btnExcluirClick(Sender: TObject);
   private
     procedure MockTesteListaCarros;
+    procedure ExcluirCarro;
+    procedure ControleBotaoExcluir;
     { Private declarations }
   public
     { Public declarations }
@@ -26,9 +31,42 @@ implementation
 
 {$R *.dfm}
 
+uses
+  uLib;
+
+procedure TfrmListarCarro.btnExcluirClick(Sender: TObject);
+begin
+  ExcluirCarro;
+end;
+
+procedure TfrmListarCarro.ControleBotaoExcluir;
+begin
+  btnExcluir.Enabled := (not DM.cdsCarro.IsEmpty);
+end;
+
+procedure TfrmListarCarro.dbgListarCarroDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+  ZebrarGrid(dbgListarCarro, DM.cdsCarro, Rect, Column, State);
+end;
+
+procedure TfrmListarCarro.ExcluirCarro;
+const
+  MENSAGEM_CONFIRMACAO = 'Deseja realmente excluir o carro %s - %s?';
+begin
+  if (not Pergunta(Format(MENSAGEM_CONFIRMACAO, [
+    DM.cdsCarroPlaca.Value, DM.cdsCarroNome.Value]))) then
+    Exit;
+
+  DM.cdsCarro.Delete;
+
+  ControleBotaoExcluir;
+end;
+
 procedure TfrmListarCarro.FormActivate(Sender: TObject);
 begin
   MockTesteListaCarros;
+  ControleBotaoExcluir;
 end;
 
 procedure TfrmListarCarro.MockTesteListaCarros;

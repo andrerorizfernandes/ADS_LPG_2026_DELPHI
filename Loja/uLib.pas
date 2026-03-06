@@ -10,6 +10,7 @@ procedure Alerta(Mensagem: string);
 procedure Informacao(Mensagem: string);
 procedure Erro(Mensagem: string);
 procedure ZebrarGrid(Sender, DataSet: TObject; Rect: TRect; Column: TColumn; State: TGridDrawState);
+function Pergunta(Pergunta: string): Boolean;
 
 implementation
 
@@ -61,5 +62,14 @@ begin
             (Sender as TDBGrid).Canvas.FillRect(Rect);
             (Sender as TDBGrid).DefaultDrawDataCell(rect,column.Field,State);
           end;
+end;
+
+function Pergunta(Pergunta: string): Boolean;
+begin
+  if Application.MessageBox(PChar(Pergunta), PWideChar(NOME_SISTEMA),
+    MB_ICONQUESTION + MB_YESNO + MB_DEFBUTTON2) = idYes then
+    Exit(True);
+
+  Result := False;
 end;
 end.
