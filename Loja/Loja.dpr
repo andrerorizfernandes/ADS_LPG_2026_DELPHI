@@ -4,7 +4,9 @@ uses
   Vcl.Forms,
   uPrincipal in 'uPrincipal.pas' {frmPrincipal},
   uListarCarro in 'uListarCarro.pas' {frmListarCarro},
-  uDM in 'uDM.pas' {DM: TDataModule};
+  uDM in 'uDM.pas' {DM: TDataModule},
+  uLib in 'uLib.pas',
+  uConstante in 'uConstante.pas';
 
 {$R *.res}
 
