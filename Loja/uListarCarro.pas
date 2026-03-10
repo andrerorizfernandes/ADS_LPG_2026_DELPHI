@@ -8,6 +8,8 @@ uses
   Vcl.Grids, Vcl.DBGrids, uDM;
 
 type
+  TAcao = (tacInserir, tacEditar);
+
   TfrmListarCarro = class(TForm)
     pnlRodape: TPanel;
     btnExcluir: TButton;
@@ -18,10 +20,13 @@ type
     procedure dbgListarCarroDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure btnExcluirClick(Sender: TObject);
+    procedure btnInserirClick(Sender: TObject);
+    procedure btnEditarClick(Sender: TObject);
   private
     procedure MockTesteListaCarros;
     procedure ExcluirCarro;
     procedure ControleBotaoExcluir;
+    procedure AbrirCadastro(const Acao: TAcao);
     { Private declarations }
   public
     { Public declarations }
@@ -32,11 +37,32 @@ implementation
 {$R *.dfm}
 
 uses
-  uLib;
+  uLib,
+  uCarro;
+
+procedure TfrmListarCarro.AbrirCadastro(const Acao: TAcao);
+begin
+  var TelaCarro := TfrmCarro.Create(nil);
+  try
+    TelaCarro.ShowModal;
+  finally
+    TelaCarro.Free;
+  end;
+end;
+
+procedure TfrmListarCarro.btnEditarClick(Sender: TObject);
+begin
+  AbrirCadastro;
+end;
 
 procedure TfrmListarCarro.btnExcluirClick(Sender: TObject);
 begin
   ExcluirCarro;
+end;
+
+procedure TfrmListarCarro.btnInserirClick(Sender: TObject);
+begin
+  AbrirCadastro;
 end;
 
 procedure TfrmListarCarro.ControleBotaoExcluir;

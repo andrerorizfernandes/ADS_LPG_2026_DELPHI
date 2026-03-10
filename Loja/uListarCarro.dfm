@@ -20,34 +20,49 @@ object frmListarCarro: TfrmListarCarro
     Width = 718
     Height = 29
     Align = alBottom
+    Padding.Left = 1
+    Padding.Top = 1
+    Padding.Right = 1
+    Padding.Bottom = 1
     TabOrder = 0
     object btnExcluir: TButton
-      Left = 636
-      Top = 1
+      Left = 635
+      Top = 2
       Width = 81
-      Height = 27
+      Height = 25
       Align = alRight
       Caption = 'E&xcluir'
       TabOrder = 0
       OnClick = btnExcluirClick
+      ExplicitLeft = 636
+      ExplicitTop = 1
+      ExplicitHeight = 27
     end
     object btnEditar: TButton
-      Left = 555
-      Top = 1
+      Left = 554
+      Top = 2
       Width = 81
-      Height = 27
+      Height = 25
       Align = alRight
       Caption = '&Editar'
       TabOrder = 1
+      OnClick = btnEditarClick
+      ExplicitLeft = 555
+      ExplicitTop = 1
+      ExplicitHeight = 27
     end
     object btnInserir: TButton
-      Left = 474
-      Top = 1
+      Left = 473
+      Top = 2
       Width = 81
-      Height = 27
+      Height = 25
       Align = alRight
       Caption = '&Inserir'
       TabOrder = 2
+      OnClick = btnInserirClick
+      ExplicitLeft = 474
+      ExplicitTop = 1
+      ExplicitHeight = 27
     end
   end
   object dbgListarCarro: TDBGrid
