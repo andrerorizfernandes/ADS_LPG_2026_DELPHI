@@ -5,10 +5,9 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, uDM;
+  Vcl.Grids, Vcl.DBGrids, uDM, uEnumerador;
 
 type
-  TAcao = (tacInserir, tacEditar);
 
   TfrmListarCarro = class(TForm)
     pnlRodape: TPanel;
@@ -44,6 +43,7 @@ procedure TfrmListarCarro.AbrirCadastro(const Acao: TAcao);
 begin
   var TelaCarro := TfrmCarro.Create(nil);
   try
+    TelaCarro.TipoAcao := Acao;
     TelaCarro.ShowModal;
   finally
     TelaCarro.Free;
@@ -52,7 +52,7 @@ end;
 
 procedure TfrmListarCarro.btnEditarClick(Sender: TObject);
 begin
-  AbrirCadastro;
+  AbrirCadastro(tacEditar);
 end;
 
 procedure TfrmListarCarro.btnExcluirClick(Sender: TObject);
@@ -62,7 +62,7 @@ end;
 
 procedure TfrmListarCarro.btnInserirClick(Sender: TObject);
 begin
-  AbrirCadastro;
+  AbrirCadastro(tacInserir);
 end;
 
 procedure TfrmListarCarro.ControleBotaoExcluir;

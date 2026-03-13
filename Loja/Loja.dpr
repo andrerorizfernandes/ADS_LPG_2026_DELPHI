@@ -7,7 +7,8 @@ uses
   uDM in 'uDM.pas' {DM: TDataModule},
   uLib in 'uLib.pas',
   uConstante in 'uConstante.pas',
-  uCarro in 'uCarro.pas' {frmCarro};
+  uCarro in 'uCarro.pas' {frmCarro},
+  uEnumerador in 'uEnumerador.pas';
 
 {$R *.res}
 

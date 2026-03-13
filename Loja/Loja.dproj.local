@@ -2,23 +2,25 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2026/02/26 20:47:52.000.487,=C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2026/02/26 20:49:24.000.037,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uPrincipal.dfm=C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2026/02/26 20:49:24.000.037,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uPrincipal.pas=C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2026/02/26 20:49:29.000.347,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Loja.dproj=C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2026/02/26 20:49:24.000.037,C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uPrincipal.dfm</Transaction>
+    <Transaction>2026/02/26 20:49:24.000.037,C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uPrincipal.pas</Transaction>
+    <Transaction>2026/02/26 20:49:29.000.347,C:\Users\Andre Roriz\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Loja.dproj</Transaction>
     <Transaction>2026/02/26 21:06:44.000.829,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/02/26 21:07:22.000.941,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uListarCarro.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/02/26 21:07:22.000.941,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uListarCarro.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.dfm</Transaction>
+    <Transaction>2026/02/26 21:07:22.000.941,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uListarCarro.dfm</Transaction>
+    <Transaction>2026/02/26 21:07:22.000.941,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uListarCarro.pas</Transaction>
     <Transaction>2026/03/03 18:49:42.000.843,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
     <Transaction>2026/03/03 18:58:38.000.185,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
     <Transaction>2026/03/03 19:15:52.000.371,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/03/03 19:16:36.000.479,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uDM.pas</Transaction>
-    <Transaction>2026/03/03 19:16:36.000.479,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uDM.dfm</Transaction>
+    <Transaction>2026/03/03 19:16:36.000.479,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uDM.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.dfm</Transaction>
+    <Transaction>2026/03/03 19:16:36.000.479,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uDM.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
     <Transaction>2026/03/05 20:44:44.000.111,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/03/05 20:45:08.000.283,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uLib.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
+    <Transaction>2026/03/05 20:45:08.000.283,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uLib.pas</Transaction>
     <Transaction>2026/03/05 20:50:23.000.657,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/03/05 20:50:36.000.326,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uConstante.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/03/10 19:02:33.628,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
-    <Transaction>2026/03/10 19:03:08.495,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uCarro.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.dfm</Transaction>
-    <Transaction>2026/03/10 19:03:08.495,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uCarro.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
+    <Transaction>2026/03/05 20:50:36.000.326,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uConstante.pas</Transaction>
+    <Transaction>2026/03/10 19:02:33.000.628,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
+    <Transaction>2026/03/10 19:03:08.000.495,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uCarro.pas</Transaction>
+    <Transaction>2026/03/10 19:03:08.000.495,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.dfm=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uCarro.dfm</Transaction>
+    <Transaction>2026/03/12 20:45:24.175,=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
+    <Transaction>2026/03/12 20:45:57.268,C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\uEnumerador.pas=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\Unit1.pas</Transaction>
   </Transactions>
 </BorlandProject>

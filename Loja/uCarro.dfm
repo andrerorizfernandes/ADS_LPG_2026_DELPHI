@@ -14,6 +14,7 @@ object frmCarro: TfrmCarro
   Font.Style = []
   Padding.Left = 1
   Position = poScreenCenter
+  OnActivate = FormActivate
   TextHeight = 15
   object pnlCarro: TPanel
     Left = 1
@@ -22,7 +23,6 @@ object frmCarro: TfrmCarro
     Height = 154
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 161
     object lblCodigo: TLabel
       Left = 8
       Top = 8
@@ -138,9 +138,6 @@ object frmCarro: TfrmCarro
     Padding.Right = 1
     Padding.Bottom = 1
     TabOrder = 1
-    ExplicitLeft = 0
-    ExplicitTop = 189
-    ExplicitWidth = 584
     object btnCancelar: TButton
       Left = 494
       Top = 3
@@ -149,9 +146,7 @@ object frmCarro: TfrmCarro
       Align = alRight
       Caption = '&Cancelar'
       TabOrder = 1
-      ExplicitLeft = 496
-      ExplicitTop = 2
-      ExplicitHeight = 26
+      OnClick = btnCancelarClick
     end
     object btnGravar: TButton
       Left = 408
@@ -161,7 +156,7 @@ object frmCarro: TfrmCarro
       Align = alRight
       Caption = '&Gravar'
       TabOrder = 0
-      ExplicitTop = 6
+      OnClick = btnGravarClick
     end
   end
 end
