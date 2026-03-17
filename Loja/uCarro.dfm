@@ -100,6 +100,7 @@ object frmCarro: TfrmCarro
       Top = 74
       Width = 130
       Height = 23
+      MaxLength = 7
       TabOrder = 3
     end
     object edtCor: TEdit
@@ -115,6 +116,7 @@ object frmCarro: TfrmCarro
       Width = 121
       Height = 23
       TabOrder = 5
+      OnKeyPress = edtPotenciaKeyPress
     end
     object edtAno: TEdit
       Left = 135

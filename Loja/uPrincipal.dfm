@@ -13,6 +13,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   Menu = menModulo
   Position = poScreenCenter
+  WindowState = wsMaximized
   TextHeight = 15
   object menModulo: TMainMenu
     Left = 48

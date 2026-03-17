@@ -11,13 +11,14 @@ procedure Informacao(Mensagem: string);
 procedure Erro(Mensagem: string);
 procedure ZebrarGrid(Sender, DataSet: TObject; Rect: TRect; Column: TColumn; State: TGridDrawState);
 function Pergunta(Pergunta: string): Boolean;
+procedure CaracterValido(Tipo: Integer; var key: Char);
 
 implementation
 
 uses
   Vcl.Forms,
   Winapi.Windows,
-  uConstante, Data.DB, Vcl.Graphics;
+  uConstante, Data.DB, Vcl.Graphics, System.SysUtils;
 
 procedure Alerta(Mensagem: string);
 begin
@@ -71,5 +72,24 @@ begin
     Exit(True);
 
   Result := False;
+end;
+
+procedure CaracterValido(Tipo: Integer; var key: Char);
+var
+ Caracteres: TSysCharSet;
+begin
+  case Tipo of
+    1: Caracteres:= ['0'..'9', #3, #8, #13, #22, #24, #27, #42];
+    2: Caracteres:= ['0'..'9'];
+    3: Caracteres:= ['a'..'z','A'..'Z'];
+    4: Caracteres:= ['a'..'z','A'..'Z','0'..'9', #3, #8, #13, #22, #24, #27];
+    5: Caracteres:= ['0'..'9',',',#8];
+  end;
+
+  if ((Tipo = 2) and CharInSet(key,Caracteres)) or
+     ((Tipo <> 2) and not CharInSet(key,Caracteres)) then
+  begin
+    key:= #0;
+  end;
 end;
 end.

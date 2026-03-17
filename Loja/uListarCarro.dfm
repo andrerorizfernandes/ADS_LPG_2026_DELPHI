@@ -13,6 +13,7 @@ object frmListarCarro: TfrmListarCarro
   Font.Style = []
   Position = poScreenCenter
   OnActivate = FormActivate
+  OnClose = FormClose
   TextHeight = 15
   object pnlRodape: TPanel
     Left = 0
@@ -34,9 +35,6 @@ object frmListarCarro: TfrmListarCarro
       Caption = 'E&xcluir'
       TabOrder = 0
       OnClick = btnExcluirClick
-      ExplicitLeft = 636
-      ExplicitTop = 1
-      ExplicitHeight = 27
     end
     object btnEditar: TButton
       Left = 554
@@ -47,9 +45,6 @@ object frmListarCarro: TfrmListarCarro
       Caption = '&Editar'
       TabOrder = 1
       OnClick = btnEditarClick
-      ExplicitLeft = 555
-      ExplicitTop = 1
-      ExplicitHeight = 27
     end
     object btnInserir: TButton
       Left = 473
@@ -60,9 +55,6 @@ object frmListarCarro: TfrmListarCarro
       Caption = '&Inserir'
       TabOrder = 2
       OnClick = btnInserirClick
-      ExplicitLeft = 474
-      ExplicitTop = 1
-      ExplicitHeight = 27
     end
   end
   object dbgListarCarro: TDBGrid

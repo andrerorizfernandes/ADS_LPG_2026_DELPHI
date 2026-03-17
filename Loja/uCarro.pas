@@ -29,6 +29,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
+    procedure edtPotenciaKeyPress(Sender: TObject; var Key: Char);
   private
     var
       FAcao: TAcao;
@@ -45,8 +46,10 @@ type
 implementation
 
 uses
+  uConstante,
   uDM,
-  uLib, Data.DB;
+  uLib,
+  Data.DB;
 
 {$R *.dfm}
 
@@ -68,22 +71,33 @@ begin
   Close;
 end;
 
+procedure TfrmCarro.edtPotenciaKeyPress(Sender: TObject; var Key: Char);
+begin
+  CaracterValido(SOMENTE_NUMEROS_VIRGULA, Key);
+end;
+
 procedure TfrmCarro.FormActivate(Sender: TObject);
 begin
   PrepararAmbiente;
 end;
 
 procedure TfrmCarro.Gravar;
+const
+  ERRO_GRAVACAO = 'Ocorreu um erro inesperado';
 begin
-  DM.cdsCarroCodigo.Value := StrToInt(edtCodigo.Text);
-  DM.cdsCarroNome.Value := edtNome.Text;
-  DM.cdsCarroMarca.Value := edtMarca.Text;
-  DM.cdsCarroPlaca.Value := edtPlaca.Text;
-  DM.cdsCarroCor.Value := edtCodigo.Text;
-  DM.cdsCarroPotencia.Value := StrToFloat(edtPotencia.Text);
-  DM.cdsCarroAno.Value := StrToInt(edtAno.Text);
+  try
+    DM.cdsCarroCodigo.Value := StrToInt(edtCodigo.Text);
+    DM.cdsCarroNome.AsString := edtNome.Text;
+    DM.cdsCarroMarca.AsString := edtMarca.Text;
+    DM.cdsCarroPlaca.AsString := edtPlaca.Text;
+    DM.cdsCarroCor.AsString := edtCodigo.Text;
+    DM.cdsCarroPotencia.Value := StrToFloat(edtPotencia.Text);
+    DM.cdsCarroAno.Value := StrToInt(edtAno.Text);
 
-  DM.cdsCarro.Post;
+    DM.cdsCarro.Post;
+  except
+    raise Exception.Create(ERRO_GRAVACAO);
+  end;
 end;
 
 procedure TfrmCarro.PrepararAmbiente;
@@ -100,8 +114,6 @@ begin
       DM.cdsCarro.Edit;
     end;
   end;
-
-  DM.cdsCarro.Open;
 end;
 
 procedure TfrmCarro.ValidarDados;

@@ -21,11 +21,13 @@ type
     procedure btnExcluirClick(Sender: TObject);
     procedure btnInserirClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
-    procedure MockTesteListaCarros;
     procedure ExcluirCarro;
     procedure ControleBotaoExcluir;
     procedure AbrirCadastro(const Acao: TAcao);
+    procedure AbrirEstrutura;
+    procedure FecharEstrutura;
     { Private declarations }
   public
     { Public declarations }
@@ -48,6 +50,14 @@ begin
   finally
     TelaCarro.Free;
   end;
+end;
+
+procedure TfrmListarCarro.AbrirEstrutura;
+begin
+  if (not DM.cdsCarro.Active) then
+    DM.cdsCarro.CreateDataSet;
+
+  DM.cdsCarro.Open;
 end;
 
 procedure TfrmListarCarro.btnEditarClick(Sender: TObject);
@@ -89,44 +99,18 @@ begin
   ControleBotaoExcluir;
 end;
 
-procedure TfrmListarCarro.FormActivate(Sender: TObject);
+procedure TfrmListarCarro.FecharEstrutura;
 begin
-  MockTesteListaCarros;
-  ControleBotaoExcluir;
+  DM.cdsCarro.Close;
 end;
 
-procedure TfrmListarCarro.MockTesteListaCarros;
+procedure TfrmListarCarro.FormActivate(Sender: TObject);
 begin
-  DM.cdsCarro.CreateDataSet;
-
-  DM.cdsCarro.Append;
-  DM.cdsCarroCodigo.Value := 1;
-  DM.cdsCarroNome.Value := 'Polo Sedan';
-  DM.cdsCarroMarca.Value := 'VW';
-  DM.cdsCarroPlaca.Value := 'TRE8964';
-  DM.cdsCarroCor.Value := 'Preto';
-  DM.cdsCarroPotencia.Value := 1.8;
-  DM.cdsCarroAno.Value := 2007;
-  DM.cdsCarro.Post;
-
-  DM.cdsCarro.Append;
-  DM.cdsCarroCodigo.Value := 2;
-  DM.cdsCarroNome.Value := 'Argo';
-  DM.cdsCarroMarca.Value := 'Fiat';
-  DM.cdsCarroPlaca.Value := 'MTR0064';
-  DM.cdsCarroCor.Value := 'Branco';
-  DM.cdsCarroPotencia.Value := 1.4;
-  DM.cdsCarroAno.Value := 2025;
-  DM.cdsCarro.Post;
-
-  DM.cdsCarro.Append;
-  DM.cdsCarroCodigo.Value := 3;
-  DM.cdsCarroNome.Value := 'Panamera';
-  DM.cdsCarroMarca.Value := 'Porshe';
-  DM.cdsCarroPlaca.Value := 'RWQ1234';
-  DM.cdsCarroCor.Value := 'Azul Fosco';
-  DM.cdsCarroPotencia.Value := 5.0;
-  DM.cdsCarroAno.Value := 2026;
-  DM.cdsCarro.Post;
+  AbrirEstrutura;
+  ControleBotaoExcluir;
+end;
+procedure TfrmListarCarro.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FecharEstrutura;
 end;
 end.
