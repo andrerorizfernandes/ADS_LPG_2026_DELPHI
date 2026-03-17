@@ -24,7 +24,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     procedure ExcluirCarro;
-    procedure ControleBotaoExcluir;
+    procedure ControleBotoes;
     procedure AbrirCadastro(const Acao: TAcao);
     procedure AbrirEstrutura;
     procedure FecharEstrutura;
@@ -47,6 +47,7 @@ begin
   try
     TelaCarro.TipoAcao := Acao;
     TelaCarro.ShowModal;
+    ControleBotoes;
   finally
     TelaCarro.Free;
   end;
@@ -75,9 +76,10 @@ begin
   AbrirCadastro(tacInserir);
 end;
 
-procedure TfrmListarCarro.ControleBotaoExcluir;
+procedure TfrmListarCarro.ControleBotoes;
 begin
   btnExcluir.Enabled := (not DM.cdsCarro.IsEmpty);
+  btnEditar.Enabled := (not DM.cdsCarro.IsEmpty);
 end;
 
 procedure TfrmListarCarro.dbgListarCarroDrawColumnCell(Sender: TObject;
@@ -96,7 +98,7 @@ begin
 
   DM.cdsCarro.Delete;
 
-  ControleBotaoExcluir;
+  ControleBotoes;
 end;
 
 procedure TfrmListarCarro.FecharEstrutura;
@@ -107,7 +109,7 @@ end;
 procedure TfrmListarCarro.FormActivate(Sender: TObject);
 begin
   AbrirEstrutura;
-  ControleBotaoExcluir;
+  ControleBotoes;
 end;
 procedure TfrmListarCarro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin

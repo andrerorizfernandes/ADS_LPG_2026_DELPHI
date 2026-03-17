@@ -37,6 +37,7 @@ type
     procedure Cancelar;
     procedure ValidarDados;
     procedure Gravar;
+    function CarregarCampos: Boolean;
     { Private declarations }
   public
     property TipoAcao: TAcao write FAcao;
@@ -71,6 +72,22 @@ begin
   Close;
 end;
 
+function TfrmCarro.CarregarCampos: Boolean;
+begin
+  if DM.cdsCarro.IsEmpty then
+    Exit(False);
+
+  edtCodigo.Text := DM.cdsCarroCodigo.AsString;
+  edtNome.Text := DM.cdsCarroNome.AsString;
+  edtMarca.Text := DM.cdsCarroMarca.AsString;
+  edtPlaca.Text := DM.cdsCarroPlaca.AsString;
+  edtCor.Text := DM.cdsCarroCor.AsString;
+  edtPotencia.Text := DM.cdsCarroPotencia.AsString;
+  edtAno.Text := DM.cdsCarroAno.AsString;
+
+  Result := True;
+end;
+
 procedure TfrmCarro.edtPotenciaKeyPress(Sender: TObject; var Key: Char);
 begin
   CaracterValido(SOMENTE_NUMEROS_VIRGULA, Key);
@@ -90,7 +107,7 @@ begin
     DM.cdsCarroNome.AsString := edtNome.Text;
     DM.cdsCarroMarca.AsString := edtMarca.Text;
     DM.cdsCarroPlaca.AsString := edtPlaca.Text;
-    DM.cdsCarroCor.AsString := edtCodigo.Text;
+    DM.cdsCarroCor.AsString := edtCor.Text;
     DM.cdsCarroPotencia.Value := StrToFloat(edtPotencia.Text);
     DM.cdsCarroAno.Value := StrToInt(edtAno.Text);
 
@@ -111,7 +128,8 @@ begin
     tacEditar:
     begin
       Caption := 'Carro [Editando]';
-      DM.cdsCarro.Edit;
+      if CarregarCampos then
+        DM.cdsCarro.Edit;
     end;
   end;
 end;
