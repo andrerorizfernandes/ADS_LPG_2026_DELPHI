@@ -103,7 +103,9 @@ const
   ERRO_GRAVACAO = 'Ocorreu um erro inesperado';
 begin
   try
-    DM.cdsCarroCodigo.Value := StrToInt(edtCodigo.Text);
+    if (FAcao = tacInserir) then
+      DM.cdsCarroCodigo.Value := GerarProximoCodigo(DM.cdsCarro);
+
     DM.cdsCarroNome.AsString := edtNome.Text;
     DM.cdsCarroMarca.AsString := edtMarca.Text;
     DM.cdsCarroPlaca.AsString := edtPlaca.Text;
@@ -136,13 +138,6 @@ end;
 
 procedure TfrmCarro.ValidarDados;
 begin
-  if (edtCodigo.Text = EmptyStr) then
-  begin
-    Alerta('Informe o código');
-    edtCodigo.SetFocus;
-    Abort;
-  end;
-
   if (edtNome.Text = EmptyStr) then
   begin
     Alerta('Informe o nome');
@@ -181,6 +176,13 @@ begin
   if (edtAno.Text = EmptyStr) then
   begin
     Alerta('Informe a ano');
+    edtAno.SetFocus;
+    Abort;
+  end;
+
+  if (Length(edtAno.Text) <> 4) then
+  begin
+    Alerta('O ano precisa ter 4 dígitos');
     edtAno.SetFocus;
     Abort;
   end;

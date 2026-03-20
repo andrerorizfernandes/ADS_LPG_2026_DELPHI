@@ -77,6 +77,7 @@ object frmCarro: TfrmCarro
       Top = 26
       Width = 81
       Height = 23
+      Enabled = False
       MaxLength = 9
       NumbersOnly = True
       TabOrder = 0
@@ -115,6 +116,7 @@ object frmCarro: TfrmCarro
       Top = 122
       Width = 121
       Height = 23
+      MaxLength = 5
       TabOrder = 5
       OnKeyPress = edtPotenciaKeyPress
     end

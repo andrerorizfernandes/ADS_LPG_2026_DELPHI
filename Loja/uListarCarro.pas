@@ -15,6 +15,7 @@ type
     btnEditar: TButton;
     btnInserir: TButton;
     dbgListarCarro: TDBGrid;
+    lblQuantidadeRegistros: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure dbgListarCarroDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -28,6 +29,7 @@ type
     procedure AbrirCadastro(const Acao: TAcao);
     procedure AbrirEstrutura;
     procedure FecharEstrutura;
+    procedure ExibirQuantidadeRegistros;
     { Private declarations }
   public
     { Public declarations }
@@ -59,6 +61,8 @@ begin
     DM.cdsCarro.CreateDataSet;
 
   DM.cdsCarro.Open;
+  RecuperarCenario(DM.cdsCarro);
+  ExibirQuantidadeRegistros;
 end;
 
 procedure TfrmListarCarro.btnEditarClick(Sender: TObject);
@@ -69,11 +73,13 @@ end;
 procedure TfrmListarCarro.btnExcluirClick(Sender: TObject);
 begin
   ExcluirCarro;
+  ExibirQuantidadeRegistros;
 end;
 
 procedure TfrmListarCarro.btnInserirClick(Sender: TObject);
 begin
   AbrirCadastro(tacInserir);
+  ExibirQuantidadeRegistros;
 end;
 
 procedure TfrmListarCarro.ControleBotoes;
@@ -101,6 +107,16 @@ begin
   ControleBotoes;
 end;
 
+procedure TfrmListarCarro.ExibirQuantidadeRegistros;
+const
+  INFORMACAO = '%d Registros ';
+begin
+  if (not DM.cdsCarro.Active) then
+    Exit;
+
+  lblQuantidadeRegistros.Caption := Format(INFORMACAO, [DM.cdsCarro.RecordCount]);
+end;
+
 procedure TfrmListarCarro.FecharEstrutura;
 begin
   DM.cdsCarro.Close;
@@ -113,6 +129,7 @@ begin
 end;
 procedure TfrmListarCarro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
+  SalvarCenario(DM.cdsCarro);
   FecharEstrutura;
 end;
 end.

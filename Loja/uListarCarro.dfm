@@ -15,6 +15,23 @@ object frmListarCarro: TfrmListarCarro
   OnActivate = FormActivate
   OnClose = FormClose
   TextHeight = 15
+  object lblQuantidadeRegistros: TLabel
+    Left = 0
+    Top = 310
+    Width = 718
+    Height = 15
+    Align = alBottom
+    Alignment = taRightJustify
+    Caption = '0 Registros '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ExplicitLeft = 653
+    ExplicitWidth = 65
+  end
   object pnlRodape: TPanel
     Left = 0
     Top = 325
@@ -61,7 +78,7 @@ object frmListarCarro: TfrmListarCarro
     Left = 0
     Top = 0
     Width = 718
-    Height = 325
+    Height = 310
     Align = alClient
     DataSource = DM.dsrCarro
     Font.Charset = DEFAULT_CHARSET
