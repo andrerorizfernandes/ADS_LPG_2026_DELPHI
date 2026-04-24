@@ -4,8 +4,8 @@ object DM: TDM
   object cdsCarro: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 32
-    Top = 80
+    Left = 328
+    Top = 144
     object cdsCarroCodigo: TIntegerField
       FieldName = 'Codigo'
     end
@@ -34,7 +34,23 @@ object DM: TDM
   end
   object dsrCarro: TDataSource
     DataSet = cdsCarro
-    Left = 88
-    Top = 80
+    Left = 384
+    Top = 144
+  end
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'Database=ads2026'
+      'User_Name=root'
+      'DriverID=MySQL')
+    LoginPrompt = False
+    Left = 48
+    Top = 32
+  end
+  object lnkMySql: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\lib\libm' +
+      'ysql.dll'
+    Left = 112
+    Top = 32
   end
 end
