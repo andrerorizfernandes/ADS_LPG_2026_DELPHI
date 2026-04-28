@@ -68,22 +68,22 @@ end;
 
 procedure TfrmCarro.Cancelar;
 begin
-  DM.cdsCarro.Cancel;
+  DM.qryCarro.Cancel;
   Close;
 end;
 
 function TfrmCarro.CarregarCampos: Boolean;
 begin
-  if DM.cdsCarro.IsEmpty then
+  if DM.qryCarro.IsEmpty then
     Exit(False);
 
-  edtCodigo.Text := DM.cdsCarroCodigo.AsString;
-  edtNome.Text := DM.cdsCarroNome.AsString;
-  edtMarca.Text := DM.cdsCarroMarca.AsString;
-  edtPlaca.Text := DM.cdsCarroPlaca.AsString;
-  edtCor.Text := DM.cdsCarroCor.AsString;
-  edtPotencia.Text := DM.cdsCarroPotencia.AsString;
-  edtAno.Text := DM.cdsCarroAno.AsString;
+  edtCodigo.Text := DM.qryCarroCodigo.AsString;
+  edtNome.Text := DM.qryCarroNome.AsString;
+  edtMarca.Text := DM.qryCarroMarca.AsString;
+  edtPlaca.Text := DM.qryCarroPlaca.AsString;
+  edtCor.Text := DM.qryCarroCor.AsString;
+  edtPotencia.Text := DM.qryCarroPotencia.AsString;
+  edtAno.Text := DM.qryCarroAno.AsString;
 
   Result := True;
 end;
@@ -103,17 +103,14 @@ const
   ERRO_GRAVACAO = 'Ocorreu um erro inesperado';
 begin
   try
-    if (FAcao = tacInserir) then
-      DM.cdsCarroCodigo.Value := GerarProximoCodigo(DM.cdsCarro);
+    DM.qryCarroNome.AsString := edtNome.Text;
+    DM.qryCarroMarca.AsString := edtMarca.Text;
+    DM.qryCarroPlaca.AsString := edtPlaca.Text;
+    DM.qryCarroCor.AsString := edtCor.Text;
+    DM.qryCarroPotencia.Value := StrToFloat(edtPotencia.Text);
+    DM.qryCarroAno.Value := StrToInt(edtAno.Text);
 
-    DM.cdsCarroNome.AsString := edtNome.Text;
-    DM.cdsCarroMarca.AsString := edtMarca.Text;
-    DM.cdsCarroPlaca.AsString := edtPlaca.Text;
-    DM.cdsCarroCor.AsString := edtCor.Text;
-    DM.cdsCarroPotencia.Value := StrToFloat(edtPotencia.Text);
-    DM.cdsCarroAno.Value := StrToInt(edtAno.Text);
-
-    DM.cdsCarro.Post;
+    DM.qryCarro.Post;
   except
     raise Exception.Create(ERRO_GRAVACAO);
   end;
@@ -125,13 +122,13 @@ begin
     tacInserir:
     begin
       Caption := 'Carro [Inserindo]';
-      DM.cdsCarro.Append;
+      DM.qryCarro.Append;
     end;
     tacEditar:
     begin
       Caption := 'Carro [Editando]';
       if CarregarCampos then
-        DM.cdsCarro.Edit;
+        DM.qryCarro.Edit;
     end;
   end;
 end;
@@ -187,7 +184,7 @@ begin
     Abort;
   end;
 
-  if (DM.cdsCarro.State = dsBrowse) then
+  if (DM.qryCarro.State = dsBrowse) then
     Abort;
 end;
 end.

@@ -1,48 +1,16 @@
 object DM: TDM
   Height = 480
   Width = 640
-  object cdsCarro: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 416
-    Top = 120
-    object cdsCarroCodigo: TIntegerField
-      FieldName = 'Codigo'
-    end
-    object cdsCarroNome: TStringField
-      FieldName = 'Nome'
-      Size = 50
-    end
-    object cdsCarroMarca: TStringField
-      FieldName = 'Marca'
-      Size = 30
-    end
-    object cdsCarroPlaca: TStringField
-      FieldName = 'Placa'
-      Size = 7
-    end
-    object cdsCarroCor: TStringField
-      FieldName = 'Cor'
-      Size = 15
-    end
-    object cdsCarroPotencia: TFloatField
-      FieldName = 'Potencia'
-    end
-    object cdsCarroAno: TIntegerField
-      FieldName = 'Ano'
-    end
-  end
   object dsrCarro: TDataSource
-    DataSet = cdsCarro
-    Left = 472
-    Top = 120
+    DataSet = qryCarro
+    Left = 112
+    Top = 104
   end
   object Conexao: TFDConnection
     Params.Strings = (
       'Database=ads2026'
       'User_Name=root'
       'DriverID=MySQL')
-    Connected = True
     LoginPrompt = False
     Left = 48
     Top = 32

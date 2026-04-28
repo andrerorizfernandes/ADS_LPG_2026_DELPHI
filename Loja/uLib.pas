@@ -12,10 +12,6 @@ procedure Erro(Mensagem: string);
 procedure ZebrarGrid(Sender, DataSet: TObject; Rect: TRect; Column: TColumn; State: TGridDrawState);
 function Pergunta(Pergunta: string): Boolean;
 procedure CaracterValido(Tipo: Integer; var key: Char);
-function GerarProximoCodigo(const DataSet: TClientDataSet): Integer;
-procedure SalvarCenario(const DataSet: TClientDataSet);
-procedure RecuperarCenario(const DataSet: TClientDataSet);
-function ObterDiretorioCenario(const DataSet: TClientDataSet): string;
 
 implementation
 
@@ -95,37 +91,5 @@ begin
   begin
     key:= #0;
   end;
-end;
-
-function GerarProximoCodigo(const DataSet: TClientDataSet): Integer;
-begin
-  if DataSet.IsEmpty then
-    Exit(1);
-
-  Result := DataSet.RecordCount + 1;
-end;
-
-procedure SalvarCenario(const DataSet: TClientDataSet);
-begin
-
-
-  DataSet.SaveToFile(ObterDiretorioCenario(DataSet), dfXMLUTF8);
-end;
-
-procedure RecuperarCenario(const DataSet: TClientDataSet);
-begin
-  var lDiretorioCenario := ObterDiretorioCenario(DataSet);
-  if (not FileExists(lDiretorioCenario)) then
-    Exit;
-
-  DataSet.LoadFromFile(lDiretorioCenario);
-end;
-
-function ObterDiretorioCenario(const DataSet: TClientDataSet): string;
-const
-  NOME_ARQUIVO = '%sCenario_%s.xml';
-begin
-  var lDiretorioAplicao := ExtractFilePath(ParamStr(0));
-  Result := Format(NOME_ARQUIVO, [lDiretorioAplicao, DataSet.Name]);
 end;
 end.

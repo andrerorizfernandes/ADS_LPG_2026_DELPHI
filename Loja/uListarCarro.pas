@@ -57,11 +57,9 @@ end;
 
 procedure TfrmListarCarro.AbrirEstrutura;
 begin
-  if (not DM.cdsCarro.Active) then
-    DM.cdsCarro.CreateDataSet;
+  if (not DM.qryCarro.Active) then
+    DM.qryCarro.Open;
 
-  DM.cdsCarro.Open;
-  RecuperarCenario(DM.cdsCarro);
   ExibirQuantidadeRegistros;
 end;
 
@@ -84,14 +82,14 @@ end;
 
 procedure TfrmListarCarro.ControleBotoes;
 begin
-  btnExcluir.Enabled := (not DM.cdsCarro.IsEmpty);
-  btnEditar.Enabled := (not DM.cdsCarro.IsEmpty);
+  btnExcluir.Enabled := (not DM.qryCarro.IsEmpty);
+  btnEditar.Enabled := (not DM.qryCarro.IsEmpty);
 end;
 
 procedure TfrmListarCarro.dbgListarCarroDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
-  ZebrarGrid(dbgListarCarro, DM.cdsCarro, Rect, Column, State);
+  ZebrarGrid(dbgListarCarro, DM.qryCarro, Rect, Column, State);
 end;
 
 procedure TfrmListarCarro.ExcluirCarro;
@@ -99,10 +97,10 @@ const
   MENSAGEM_CONFIRMACAO = 'Deseja realmente excluir o carro %s - %s?';
 begin
   if (not Pergunta(Format(MENSAGEM_CONFIRMACAO, [
-    DM.cdsCarroPlaca.Value, DM.cdsCarroNome.Value]))) then
+    DM.qryCarroPlaca.Value, DM.qryCarroNome.Value]))) then
     Exit;
 
-  DM.cdsCarro.Delete;
+  DM.qryCarro.Delete;
 
   ControleBotoes;
 end;
@@ -111,15 +109,15 @@ procedure TfrmListarCarro.ExibirQuantidadeRegistros;
 const
   INFORMACAO = '%d Registros ';
 begin
-  if (not DM.cdsCarro.Active) then
+  if (not DM.qryCarro.Active) then
     Exit;
 
-  lblQuantidadeRegistros.Caption := Format(INFORMACAO, [DM.cdsCarro.RecordCount]);
+  lblQuantidadeRegistros.Caption := Format(INFORMACAO, [DM.qryCarro.RecordCount]);
 end;
 
 procedure TfrmListarCarro.FecharEstrutura;
 begin
-  DM.cdsCarro.Close;
+  DM.qryCarro.Close;
 end;
 
 procedure TfrmListarCarro.FormActivate(Sender: TObject);
@@ -129,7 +127,6 @@ begin
 end;
 procedure TfrmListarCarro.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  SalvarCenario(DM.cdsCarro);
   FecharEstrutura;
 end;
 end.

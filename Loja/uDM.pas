@@ -12,15 +12,7 @@ uses
 
 type
   TDM = class(TDataModule)
-    cdsCarro: TClientDataSet;
     dsrCarro: TDataSource;
-    cdsCarroCodigo: TIntegerField;
-    cdsCarroNome: TStringField;
-    cdsCarroMarca: TStringField;
-    cdsCarroPlaca: TStringField;
-    cdsCarroCor: TStringField;
-    cdsCarroPotencia: TFloatField;
-    cdsCarroAno: TIntegerField;
     Conexao: TFDConnection;
     lnkMySql: TFDPhysMySQLDriverLink;
     qryCarro: TFDQuery;
