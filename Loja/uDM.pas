@@ -8,21 +8,20 @@ uses
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
   FireDAC.Phys, FireDAC.VCLUI.Wait, FireDAC.Comp.Client, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet;
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.FB, FireDAC.Phys.FBDef;
 
 type
   TDM = class(TDataModule)
     dsrCarro: TDataSource;
     Conexao: TFDConnection;
-    lnkMySql: TFDPhysMySQLDriverLink;
     qryCarro: TFDQuery;
-    qryCarrocodigo: TFDAutoIncField;
-    qryCarronome: TStringField;
-    qryCarromarca: TStringField;
-    qryCarroplaca: TStringField;
-    qryCarrocor: TStringField;
-    qryCarropotencia: TBCDField;
-    qryCarroano: TIntegerField;
+    qryCarroCODIGO: TIntegerField;
+    qryCarroNOME: TWideStringField;
+    qryCarroMARCA: TWideStringField;
+    qryCarroPLACA: TWideStringField;
+    qryCarroCOR: TWideStringField;
+    qryCarroPOTENCIA: TFMTBCDField;
+    qryCarroANO: TIntegerField;
   private
     { Private declarations }
   public

@@ -8,18 +8,15 @@ object DM: TDM
   end
   object Conexao: TFDConnection
     Params.Strings = (
-      'Database=ads2026'
-      'User_Name=root'
-      'DriverID=MySQL')
+      
+        'Database=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja' +
+        '\database\LOJA.FDB'
+      'User_Name=SYSDBA'
+      'Password=18071988'
+      'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 48
-    Top = 32
-  end
-  object lnkMySql: TFDPhysMySQLDriverLink
-    VendorLib = 
-      'C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja\lib\libm' +
-      'ysql.dll'
-    Left = 112
     Top = 32
   end
   object qryCarro: TFDQuery
@@ -36,46 +33,44 @@ object DM: TDM
       'FROM carro c')
     Left = 48
     Top = 104
-    object qryCarrocodigo: TFDAutoIncField
-      FieldName = 'codigo'
-      Origin = 'codigo'
+    object qryCarroCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      ReadOnly = False
-      IdentityInsert = True
     end
-    object qryCarronome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
+    object qryCarroNOME: TWideStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
       Required = True
       Size = 50
     end
-    object qryCarromarca: TStringField
-      FieldName = 'marca'
-      Origin = 'marca'
+    object qryCarroMARCA: TWideStringField
+      FieldName = 'MARCA'
+      Origin = 'MARCA'
       Required = True
       Size = 30
     end
-    object qryCarroplaca: TStringField
-      FieldName = 'placa'
-      Origin = 'placa'
+    object qryCarroPLACA: TWideStringField
+      FieldName = 'PLACA'
+      Origin = 'PLACA'
       Required = True
       Size = 7
     end
-    object qryCarrocor: TStringField
-      FieldName = 'cor'
-      Origin = 'cor'
+    object qryCarroCOR: TWideStringField
+      FieldName = 'COR'
+      Origin = 'COR'
       Required = True
     end
-    object qryCarropotencia: TBCDField
-      FieldName = 'potencia'
-      Origin = 'potencia'
+    object qryCarroPOTENCIA: TFMTBCDField
+      FieldName = 'POTENCIA'
+      Origin = 'POTENCIA'
       Required = True
-      Precision = 10
+      Precision = 18
       Size = 2
     end
-    object qryCarroano: TIntegerField
-      FieldName = 'ano'
-      Origin = 'ano'
+    object qryCarroANO: TIntegerField
+      FieldName = 'ANO'
+      Origin = 'ANO'
       Required = True
     end
   end

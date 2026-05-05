@@ -23,6 +23,7 @@ type
     procedure btnInserirClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dbgListarCarroDblClick(Sender: TObject);
   private
     procedure ExcluirCarro;
     procedure ControleBotoes;
@@ -84,6 +85,11 @@ procedure TfrmListarCarro.ControleBotoes;
 begin
   btnExcluir.Enabled := (not DM.qryCarro.IsEmpty);
   btnEditar.Enabled := (not DM.qryCarro.IsEmpty);
+end;
+
+procedure TfrmListarCarro.dbgListarCarroDblClick(Sender: TObject);
+begin
+  AbrirCadastro(tacEditar);
 end;
 
 procedure TfrmListarCarro.dbgListarCarroDrawColumnCell(Sender: TObject;

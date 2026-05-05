@@ -84,6 +84,7 @@ begin
     3: Caracteres:= ['a'..'z','A'..'Z'];
     4: Caracteres:= ['a'..'z','A'..'Z','0'..'9', #3, #8, #13, #22, #24, #27];
     5: Caracteres:= ['0'..'9',',',#8];
+    6: Caracteres:= ['0'..'9','.',#8];
   end;
 
   if ((Tipo = 2) and CharInSet(key,Caracteres)) or

@@ -3,7 +3,7 @@ unit uCarro;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uEnumerador;
 
 type
@@ -50,7 +50,8 @@ uses
   uConstante,
   uDM,
   uLib,
-  Data.DB;
+  Data.DB,
+  System.SysUtils;
 
 {$R *.dfm}
 
@@ -77,20 +78,23 @@ begin
   if DM.qryCarro.IsEmpty then
     Exit(False);
 
-  edtCodigo.Text := DM.qryCarroCodigo.AsString;
-  edtNome.Text := DM.qryCarroNome.AsString;
-  edtMarca.Text := DM.qryCarroMarca.AsString;
-  edtPlaca.Text := DM.qryCarroPlaca.AsString;
-  edtCor.Text := DM.qryCarroCor.AsString;
-  edtPotencia.Text := DM.qryCarroPotencia.AsString;
-  edtAno.Text := DM.qryCarroAno.AsString;
+  edtCodigo.Text := DM.qryCarroCODIGO.AsString;
+  edtNome.Text := DM.qryCarroNOME.AsString;
+  edtMarca.Text := DM.qryCarroMARCA.AsString;
+  edtPlaca.Text := DM.qryCarroPLACA.AsString;
+  edtCor.Text := DM.qryCarroCOR.AsString;
+
+  var lPotencia := StringReplace(DM.qryCarroPOTENCIA.AsString, ',', '.', [rfReplaceAll]);
+  edtPotencia.Text := lPotencia;
+
+  edtAno.Text := DM.qryCarroANO.AsString;
 
   Result := True;
 end;
 
 procedure TfrmCarro.edtPotenciaKeyPress(Sender: TObject; var Key: Char);
 begin
-  CaracterValido(SOMENTE_NUMEROS_VIRGULA, Key);
+  CaracterValido(SOMENTE_NUMEROS_PONTO, Key);
 end;
 
 procedure TfrmCarro.FormActivate(Sender: TObject);
@@ -103,14 +107,18 @@ const
   ERRO_GRAVACAO = 'Ocorreu um erro inesperado';
 begin
   try
-    DM.qryCarroNome.AsString := edtNome.Text;
-    DM.qryCarroMarca.AsString := edtMarca.Text;
-    DM.qryCarroPlaca.AsString := edtPlaca.Text;
-    DM.qryCarroCor.AsString := edtCor.Text;
-    DM.qryCarroPotencia.Value := StrToFloat(edtPotencia.Text);
-    DM.qryCarroAno.Value := StrToInt(edtAno.Text);
+    DM.qryCarroNOME.AsString := edtNome.Text;
+    DM.qryCarroMARCA.AsString := edtMarca.Text;
+    DM.qryCarroPLACA.AsString := edtPlaca.Text;
+    DM.qryCarroCOR.AsString := edtCor.Text;
+
+    var lPotencia := StringReplace(edtPotencia.Text, '.', ',', [rfReplaceAll]);
+    DM.qryCarroPOTENCIA.Value := StrToFloat(lPotencia);
+
+    DM.qryCarroANO.Value := StrToInt(edtAno.Text);
 
     DM.qryCarro.Post;
+    DM.qryCarro.Refresh;
   except
     raise Exception.Create(ERRO_GRAVACAO);
   end;

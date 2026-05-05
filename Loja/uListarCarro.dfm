@@ -1,6 +1,7 @@
 object frmListarCarro: TfrmListarCarro
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Carro'
   ClientHeight = 354
@@ -96,46 +97,54 @@ object frmListarCarro: TfrmListarCarro
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = [fsBold]
     OnDrawColumnCell = dbgListarCarroDrawColumnCell
+    OnDblClick = dbgListarCarroDblClick
     Columns = <
       item
         Expanded = False
-        FieldName = 'Codigo'
+        FieldName = 'CODIGO'
         Title.Caption = 'C'#243'digo'
         Width = 50
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Nome'
-        Width = 210
+        FieldName = 'NOME'
+        Title.Caption = 'Nome'
+        Width = 173
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Marca'
-        Width = 108
+        FieldName = 'MARCA'
+        Title.Caption = 'Marca'
+        Width = 95
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Placa'
+        FieldName = 'PLACA'
+        Title.Caption = 'Placa'
         Width = 81
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Cor'
+        FieldName = 'COR'
+        Title.Caption = 'Cor'
+        Width = 114
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Potencia'
+        FieldName = 'POTENCIA'
         Title.Caption = 'Pot'#234'ncia'
+        Width = 77
         Visible = True
       end
       item
         Expanded = False
-        FieldName = 'Ano'
+        FieldName = 'ANO'
+        Title.Caption = 'Ano'
         Visible = True
       end>
   end
