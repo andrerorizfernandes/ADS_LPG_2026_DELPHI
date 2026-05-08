@@ -16,7 +16,6 @@ type
     lblCodigo: TLabel;
     edtNome: TEdit;
     lblNome: TLabel;
-    edtMarca: TEdit;
     lblMarca: TLabel;
     edtPlaca: TEdit;
     lblPlaca: TLabel;
@@ -26,18 +25,22 @@ type
     edtPotencia: TEdit;
     edtAno: TEdit;
     lblAno: TLabel;
+    cboMarca: TComboBox;
     procedure FormActivate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure edtPotenciaKeyPress(Sender: TObject; var Key: Char);
   private
     var
-      FAcao: TAcao;
+    FAcao: TAcao;
+
     procedure PrepararAmbiente;
     procedure Cancelar;
     procedure ValidarDados;
     procedure Gravar;
     function CarregarCampos: Boolean;
+    procedure PreencherMarcas;
+    function RetornaCodigoDaMarca(const Marca: string): Integer;
     { Private declarations }
   public
     property TipoAcao: TAcao write FAcao;
@@ -80,7 +83,10 @@ begin
 
   edtCodigo.Text := DM.qryCarroCODIGO.AsString;
   edtNome.Text := DM.qryCarroNOME.AsString;
-  edtMarca.Text := DM.qryCarroMARCA.AsString;
+
+//  cboMarca.Text := DM.qryCarroMARCA.AsString;
+//  ?? paramos aqui ??
+
   edtPlaca.Text := DM.qryCarroPLACA.AsString;
   edtCor.Text := DM.qryCarroCOR.AsString;
 
@@ -108,7 +114,7 @@ const
 begin
   try
     DM.qryCarroNOME.AsString := edtNome.Text;
-    DM.qryCarroMARCA.AsString := edtMarca.Text;
+    DM.qryCarroCODIGOMARCA.AsInteger := RetornaCodigoDaMarca(cboMarca.Text);
     DM.qryCarroPLACA.AsString := edtPlaca.Text;
     DM.qryCarroCOR.AsString := edtCor.Text;
 
@@ -126,6 +132,8 @@ end;
 
 procedure TfrmCarro.PrepararAmbiente;
 begin
+  PreencherMarcas;
+
   case FAcao of
     tacInserir:
     begin
@@ -150,10 +158,10 @@ begin
     Abort;
   end;
 
-  if (edtMarca.Text = EmptyStr) then
+  if (cboMarca.ItemIndex = -1) then
   begin
-    Alerta('Informe a marca');
-    edtMarca.SetFocus;
+    Alerta('Selecione a marca');
+    cboMarca.SetFocus;
     Abort;
   end;
 
@@ -194,5 +202,32 @@ begin
 
   if (DM.qryCarro.State = dsBrowse) then
     Abort;
+end;
+
+procedure TfrmCarro.PreencherMarcas;
+begin
+  if DM.qryMarca.IsEmpty then
+    Exit;
+
+  cboMarca.Items.Clear;
+  DM.qryMarca.First;
+  while (not DM.qryMarca.Eof) do
+  begin
+    cboMarca.Items.Add(DM.qryMarcaNOME.AsString);
+
+    DM.qryMarca.Next;
+  end;
+end;
+
+function TfrmCarro.RetornaCodigoDaMarca(const Marca: string): Integer;
+const
+  VALOR_INVALIDO = 0;
+begin
+  if Marca.Trim.IsEmpty then
+    Exit(VALOR_INVALIDO);
+
+  Result := VALOR_INVALIDO;
+  if DM.qryMarca.Locate('NOME', Marca.Trim, [loCaseInsensitive, loPartialKey]) then
+    Result := DM.qryMarcaCODIGO.AsInteger;
 end;
 end.

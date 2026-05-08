@@ -61,6 +61,9 @@ begin
   if (not DM.qryCarro.Active) then
     DM.qryCarro.Open;
 
+  if (not DM.qryMarca.Active) then
+    DM.qryMarca.Open;
+
   ExibirQuantidadeRegistros;
 end;
 
@@ -124,6 +127,7 @@ end;
 procedure TfrmListarCarro.FecharEstrutura;
 begin
   DM.qryCarro.Close;
+  DM.qryMarca.Close;
 end;
 
 procedure TfrmListarCarro.FormActivate(Sender: TObject);

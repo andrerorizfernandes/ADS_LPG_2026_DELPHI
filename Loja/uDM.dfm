@@ -25,12 +25,14 @@ object DM: TDM
       'SELECT'
       '  c.codigo,'
       '  c.nome,'
-      '  c.marca,'
+      '  c.codigomarca,'
+      '  m.nome marca,'
       '  c.placa,'
       '  c.cor,'
       '  c.potencia,'
       '  c.ano'
-      'FROM carro c')
+      'FROM carro c'
+      'INNER JOIN MARCA m ON c.CODIGOMARCA = m.CODIGO')
     Left = 48
     Top = 104
     object qryCarroCODIGO: TIntegerField
@@ -44,10 +46,15 @@ object DM: TDM
       Required = True
       Size = 50
     end
+    object qryCarroCODIGOMARCA: TIntegerField
+      FieldName = 'CODIGOMARCA'
+      Origin = 'CODIGOMARCA'
+      Required = True
+    end
     object qryCarroMARCA: TWideStringField
       FieldName = 'MARCA'
       Origin = 'MARCA'
-      Required = True
+      ProviderFlags = []
       Size = 30
     end
     object qryCarroPLACA: TWideStringField
@@ -73,5 +80,32 @@ object DM: TDM
       Origin = 'ANO'
       Required = True
     end
+  end
+  object qryMarca: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT'
+      '  m.CODIGO,'
+      '  m.NOME '
+      'FROM marca m'
+      'ORDER BY m.NOME')
+    Left = 48
+    Top = 176
+    object qryMarcaCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryMarcaNOME: TWideStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 60
+    end
+  end
+  object dsrMarca: TDataSource
+    DataSet = qryMarca
+    Left = 113
+    Top = 176
   end
 end

@@ -22,6 +22,11 @@ type
     qryCarroCOR: TWideStringField;
     qryCarroPOTENCIA: TFMTBCDField;
     qryCarroANO: TIntegerField;
+    qryCarroCODIGOMARCA: TIntegerField;
+    qryMarca: TFDQuery;
+    dsrMarca: TDataSource;
+    qryMarcaCODIGO: TIntegerField;
+    qryMarcaNOME: TWideStringField;
   private
     { Private declarations }
   public

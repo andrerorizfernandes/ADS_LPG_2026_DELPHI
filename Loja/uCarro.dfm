@@ -89,13 +89,6 @@ object frmCarro: TfrmCarro
       Height = 23
       TabOrder = 1
     end
-    object edtMarca: TEdit
-      Left = 8
-      Top = 74
-      Width = 217
-      Height = 23
-      TabOrder = 2
-    end
     object edtPlaca: TEdit
       Left = 231
       Top = 74
@@ -128,6 +121,14 @@ object frmCarro: TfrmCarro
       MaxLength = 4
       NumbersOnly = True
       TabOrder = 6
+    end
+    object cboMarca: TComboBox
+      Left = 8
+      Top = 74
+      Width = 217
+      Height = 23
+      Style = csDropDownList
+      TabOrder = 2
     end
   end
   object pnlRodape: TPanel
