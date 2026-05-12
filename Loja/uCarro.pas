@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uEnumerador;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uEnumerador,
+  Vcl.Buttons;
 
 type
   TfrmCarro = class(TForm)
@@ -26,10 +27,12 @@ type
     edtAno: TEdit;
     lblAno: TLabel;
     cboMarca: TComboBox;
+    SpeedButton1: TSpeedButton;
     procedure FormActivate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure edtPotenciaKeyPress(Sender: TObject; var Key: Char);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     var
     FAcao: TAcao;
@@ -41,6 +44,7 @@ type
     function CarregarCampos: Boolean;
     procedure PreencherMarcas;
     function RetornaCodigoDaMarca(const Marca: string): Integer;
+    procedure CadastrarMarca;
     { Private declarations }
   public
     property TipoAcao: TAcao write FAcao;
@@ -54,7 +58,8 @@ uses
   uDM,
   uLib,
   Data.DB,
-  System.SysUtils;
+  System.SysUtils,
+  FireDAC.Comp.Client;
 
 {$R *.dfm}
 
@@ -209,6 +214,7 @@ begin
     Exit;
 
   cboMarca.Items.Clear;
+  DM.qryMarca.Refresh;
   DM.qryMarca.First;
   while (not DM.qryMarca.Eof) do
   begin
@@ -228,5 +234,43 @@ begin
   Result := VALOR_INVALIDO;
   if DM.qryMarca.Locate('NOME', Marca.Trim, [loCaseInsensitive, loPartialKey]) then
     Result := DM.qryMarcaCODIGO.AsInteger;
+end;
+
+procedure TfrmCarro.SpeedButton1Click(Sender: TObject);
+begin
+  CadastrarMarca;
+  PreencherMarcas;
+end;
+
+procedure TfrmCarro.CadastrarMarca;
+const
+  VALOR_INDICADOR_ERRO_UNIQUE = 'UNIQUE KEY constraint "MARCA_UNIQUE"';
+  MENSAGEM_INFORMAR_MARCA = 'Informe a marca';
+  MENSAGEM_MARCA_DUPLICADA = 'A marca %s já foi cadastrada';
+  SQL_CADASTRO_MARCA = 'INSERT INTO MARCA(NOME) VALUES (''%s'');';
+var
+  qryCadastroMarca: TFDQuery;
+begin
+  var Marca := InputBox(MENSAGEM_INFORMAR_MARCA, EmptyStr, EmptyStr);
+
+  if (Marca.Trim.IsEmpty) then
+    Exit;
+
+  qryCadastroMarca := TFDQuery.Create(nil);
+  try
+    qryCadastroMarca.Connection := DM.Conexao;
+    qryCadastroMarca.Close;
+    qryCadastroMarca.SQL.Text := Format(SQL_CADASTRO_MARCA, [Marca]);
+
+    try
+      qryCadastroMarca.ExecSQL;
+    except
+      on E: Exception do
+        if E.Message.Contains(VALOR_INDICADOR_ERRO_UNIQUE) then
+          Erro(Format(MENSAGEM_MARCA_DUPLICADA, [Marca]));
+    end;
+  finally
+    qryCadastroMarca.Free;
+  end;
 end;
 end.

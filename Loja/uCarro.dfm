@@ -23,6 +23,8 @@ object frmCarro: TfrmCarro
     Height = 154
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = -2
+    ExplicitTop = -3
     object lblCodigo: TLabel
       Left = 8
       Top = 8
@@ -71,6 +73,18 @@ object frmCarro: TfrmCarro
       Width = 22
       Height = 15
       Caption = 'Ano'
+    end
+    object SpeedButton1: TSpeedButton
+      Left = 202
+      Top = 74
+      Width = 23
+      Height = 22
+      Hint = 'Informe a marca'
+      Caption = '+'
+      Flat = True
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton1Click
     end
     object edtCodigo: TEdit
       Left = 8
@@ -125,7 +139,7 @@ object frmCarro: TfrmCarro
     object cboMarca: TComboBox
       Left = 8
       Top = 74
-      Width = 217
+      Width = 193
       Height = 23
       Style = csDropDownList
       TabOrder = 2
