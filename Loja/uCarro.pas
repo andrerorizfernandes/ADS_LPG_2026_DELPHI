@@ -84,8 +84,7 @@ begin
   edtCodigo.Text := DM.qryCarroCODIGO.AsString;
   edtNome.Text := DM.qryCarroNOME.AsString;
 
-//  cboMarca.Text := DM.qryCarroMARCA.AsString;
-//  ?? paramos aqui ??
+  cboMarca.ItemIndex := cboMarca.Items.IndexOf(DM.qryCarroMARCA.AsString);
 
   edtPlaca.Text := DM.qryCarroPLACA.AsString;
   edtCor.Text := DM.qryCarroCOR.AsString;
