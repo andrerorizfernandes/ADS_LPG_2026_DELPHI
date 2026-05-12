@@ -247,7 +247,7 @@ const
   VALOR_INDICADOR_ERRO_UNIQUE = 'UNIQUE KEY constraint "MARCA_UNIQUE"';
   MENSAGEM_INFORMAR_MARCA = 'Informe a marca';
   MENSAGEM_MARCA_DUPLICADA = 'A marca %s já foi cadastrada';
-  SQL_CADASTRO_MARCA = 'INSERT INTO MARCA(NOME) VALUES (''%s'');';
+  SQL_CADASTRO_MARCA = 'INSERT INTO MARCA(NOME) VALUES (:MARCA);';
 var
   qryCadastroMarca: TFDQuery;
 begin
@@ -260,7 +260,8 @@ begin
   try
     qryCadastroMarca.Connection := DM.Conexao;
     qryCadastroMarca.Close;
-    qryCadastroMarca.SQL.Text := Format(SQL_CADASTRO_MARCA, [Marca]);
+    qryCadastroMarca.SQL.Text := SQL_CADASTRO_MARCA;
+    qryCadastroMarca.Params[0].Value := Marca;
 
     try
       qryCadastroMarca.ExecSQL;
