@@ -28,6 +28,13 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'C&liente'
       end
     end
+    object Movimento1: TMenuItem
+      Caption = 'Movimento'
+      object Aluguel1: TMenuItem
+        Caption = 'Aluguel'
+        OnClick = Aluguel1Click
+      end
+    end
     object Relatrio1: TMenuItem
       Caption = 'Relat'#243'rio'
     end

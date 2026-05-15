@@ -14,9 +14,13 @@ type
     Sair1: TMenuItem;
     Carro1: TMenuItem;
     Cidade1: TMenuItem;
+    Movimento1: TMenuItem;
+    Aluguel1: TMenuItem;
     procedure Carro1Click(Sender: TObject);
+    procedure Aluguel1Click(Sender: TObject);
   private
     procedure ExibirCarro;
+    procedure ExibirAluguel;
     { Private declarations }
   public
     { Public declarations }
@@ -28,9 +32,15 @@ var
 implementation
 
 uses
-  uListarCarro;
+  uListarCarro,
+  uListarAluguel;
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.Aluguel1Click(Sender: TObject);
+begin
+  ExibirAluguel;
+end;
 
 procedure TfrmPrincipal.Carro1Click(Sender: TObject);
 begin
@@ -47,4 +57,13 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.ExibirAluguel;
+begin
+  var TelaListarAluguel := TfrmListarAluguel.Create(nil);
+  try
+    TelaListarAluguel.ShowModal;
+  finally
+    TelaListarAluguel.Free;
+  end;
+end;
 end.

@@ -144,6 +144,10 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="uEnumerador.pas"/>
+        <DCCReference Include="uListarAluguel.pas">
+            <Form>frmListarAluguel</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

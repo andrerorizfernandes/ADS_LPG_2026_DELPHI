@@ -8,7 +8,8 @@ uses
   uLib in 'uLib.pas',
   uConstante in 'uConstante.pas',
   uCarro in 'uCarro.pas' {frmCarro},
-  uEnumerador in 'uEnumerador.pas';
+  uEnumerador in 'uEnumerador.pas',
+  uListarAluguel in 'uListarAluguel.pas' {frmListarAluguel};
 
 {$R *.res}
 
