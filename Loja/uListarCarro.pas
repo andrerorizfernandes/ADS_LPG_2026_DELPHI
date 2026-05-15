@@ -109,7 +109,11 @@ begin
     DM.qryCarroPlaca.Value, DM.qryCarroNome.Value]))) then
     Exit;
 
-  DM.qryCarro.Delete;
+  DM.qryCarro.Edit;
+  DM.qryCarroEXCLUIDO.Value := True;
+  DM.qryCarro.Post;
+
+  DM.qryCarro.Refresh;
 
   ControleBotoes;
 end;

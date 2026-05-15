@@ -27,6 +27,17 @@ type
     dsrMarca: TDataSource;
     qryMarcaCODIGO: TIntegerField;
     qryMarcaNOME: TWideStringField;
+    qryCarroEXCLUIDO: TBooleanField;
+    qryAluguel: TFDQuery;
+    dsrAluguel: TDataSource;
+    qryAluguelCODIGOALUGUEL: TIntegerField;
+    qryAluguelCODIGOCARRO: TIntegerField;
+    qryAluguelNOME: TWideStringField;
+    qryAluguelPLACA: TWideStringField;
+    qryAluguelVALOR: TFMTBCDField;
+    qryAluguelDIAS: TIntegerField;
+    qryAluguelPAGO: TBooleanField;
+    qryAluguelEXCLUIDO: TBooleanField;
   private
     { Private declarations }
   public

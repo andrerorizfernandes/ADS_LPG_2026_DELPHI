@@ -30,9 +30,11 @@ object DM: TDM
       '  c.placa,'
       '  c.cor,'
       '  c.potencia,'
-      '  c.ano'
+      '  c.ano,'
+      '  c.excluido'
       'FROM carro c'
-      'INNER JOIN MARCA m ON c.CODIGOMARCA = m.CODIGO')
+      'INNER JOIN MARCA m ON c.CODIGOMARCA = m.CODIGO'
+      'WHERE c.excluido = False')
     Left = 48
     Top = 104
     object qryCarroCODIGO: TIntegerField
@@ -80,6 +82,10 @@ object DM: TDM
       Origin = 'ANO'
       Required = True
     end
+    object qryCarroEXCLUIDO: TBooleanField
+      FieldName = 'EXCLUIDO'
+      Origin = 'EXCLUIDO'
+    end
   end
   object qryMarca: TFDQuery
     Connection = Conexao
@@ -107,5 +113,76 @@ object DM: TDM
     DataSet = qryMarca
     Left = 113
     Top = 176
+  end
+  object qryAluguel: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT'
+      '  a.CODIGOALUGUEL,'
+      '  a.CODIGOCARRO,'
+      '  c.NOME,'
+      '  c.PLACA,'
+      '  a.VALOR,'
+      '  a.DIAS,'
+      '  a.PAGO,'
+      '  a.EXCLUIDO'
+      'FROM aluguel a'
+      
+        'INNER JOIN CARRO c ON c.CODIGO = a.CODIGOCARRO AND c.EXCLUIDO = ' +
+        'FALSE '
+      'WHERE a.EXCLUIDO = FALSE')
+    Left = 48
+    Top = 248
+    object qryAluguelCODIGOALUGUEL: TIntegerField
+      FieldName = 'CODIGOALUGUEL'
+      Origin = 'CODIGOALUGUEL'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryAluguelCODIGOCARRO: TIntegerField
+      FieldName = 'CODIGOCARRO'
+      Origin = 'CODIGOCARRO'
+      Required = True
+    end
+    object qryAluguelNOME: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object qryAluguelPLACA: TWideStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'PLACA'
+      Origin = 'PLACA'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 7
+    end
+    object qryAluguelVALOR: TFMTBCDField
+      FieldName = 'VALOR'
+      Origin = 'VALOR'
+      Precision = 18
+      Size = 2
+    end
+    object qryAluguelDIAS: TIntegerField
+      FieldName = 'DIAS'
+      Origin = 'DIAS'
+      Required = True
+    end
+    object qryAluguelPAGO: TBooleanField
+      FieldName = 'PAGO'
+      Origin = 'PAGO'
+      Required = True
+    end
+    object qryAluguelEXCLUIDO: TBooleanField
+      FieldName = 'EXCLUIDO'
+      Origin = 'EXCLUIDO'
+    end
+  end
+  object dsrAluguel: TDataSource
+    DataSet = qryAluguel
+    Left = 114
+    Top = 248
   end
 end
