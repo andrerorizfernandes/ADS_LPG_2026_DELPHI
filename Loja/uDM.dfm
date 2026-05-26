@@ -115,6 +115,7 @@ object DM: TDM
     Top = 176
   end
   object qryAluguel: TFDQuery
+    OnCalcFields = qryAluguelCalcFields
     Connection = Conexao
     SQL.Strings = (
       'SELECT'

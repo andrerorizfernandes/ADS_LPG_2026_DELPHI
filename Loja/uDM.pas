@@ -39,7 +39,9 @@ type
     qryAluguelPAGO: TBooleanField;
     qryAluguelEXCLUIDO: TBooleanField;
     qryAluguelStatusPagamento: TStringField;
+    procedure qryAluguelCalcFields(DataSet: TDataSet);
   private
+    procedure PreencherStatusDoPagamento;
     { Private declarations }
   public
     { Public declarations }
@@ -54,4 +56,18 @@ implementation
 
 {$R *.dfm}
 
+procedure TDM.qryAluguelCalcFields(DataSet: TDataSet);
+begin
+  PreencherStatusDoPagamento;
+end;
+
+procedure TDM.PreencherStatusDoPagamento;
+begin
+  if (DM.qryAluguel.State <> dsCalcFields) then
+    Exit;
+
+  DM.qryAluguelStatusPagamento.AsString := 'Não';
+  if DM.qryAluguelPAGO.Value then
+    DM.qryAluguelStatusPagamento.AsString := 'Sim';
+end;
 end.
