@@ -162,6 +162,7 @@ object DM: TDM
     object qryAluguelVALOR: TFMTBCDField
       FieldName = 'VALOR'
       Origin = 'VALOR'
+      currency = True
       Precision = 18
       Size = 2
     end
@@ -178,6 +179,11 @@ object DM: TDM
     object qryAluguelEXCLUIDO: TBooleanField
       FieldName = 'EXCLUIDO'
       Origin = 'EXCLUIDO'
+    end
+    object qryAluguelStatusPagamento: TStringField
+      FieldKind = fkInternalCalc
+      FieldName = 'StatusPagamento'
+      Size = 3
     end
   end
   object dsrAluguel: TDataSource

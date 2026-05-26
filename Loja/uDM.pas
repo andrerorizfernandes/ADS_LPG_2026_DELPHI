@@ -38,6 +38,7 @@ type
     qryAluguelDIAS: TIntegerField;
     qryAluguelPAGO: TBooleanField;
     qryAluguelEXCLUIDO: TBooleanField;
+    qryAluguelStatusPagamento: TStringField;
   private
     { Private declarations }
   public

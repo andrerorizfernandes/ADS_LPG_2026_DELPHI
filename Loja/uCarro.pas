@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, uEnumerador,
-  Vcl.Buttons;
+  Vcl.Buttons, FireDAC.Stan.Param;
 
 type
   TfrmCarro = class(TForm)

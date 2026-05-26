@@ -133,7 +133,7 @@ object frmListarAluguel: TfrmListarAluguel
       end
       item
         Expanded = False
-        FieldName = 'PAGO'
+        FieldName = 'StatusPagamento'
         Title.Caption = 'Pago'
         Width = 45
         Visible = True

@@ -61,6 +61,20 @@ begin
   if (not DM.qryAluguel.Active) then
     DM.qryAluguel.Open;
 
+  DM.qryAluguel.First;
+  while (not DM.qryAluguel.Eof) do
+  begin
+    DM.qryAluguel.Edit;
+    DM.qryAluguelStatusPagamento.AsString := 'Não';
+
+    if DM.qryAluguelPAGO.Value then
+      DM.qryAluguelStatusPagamento.AsString := 'Sim';
+
+    DM.qryAluguel.Post;
+
+    DM.qryAluguel.Next;
+  end;
+
   if (not DM.qryCarro.Active) then
     DM.qryCarro.Open;
 
