@@ -148,6 +148,10 @@
             <Form>frmListarAluguel</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uAluguel.pas">
+            <Form>frmAluguel</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

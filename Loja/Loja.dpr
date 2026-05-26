@@ -9,7 +9,8 @@ uses
   uConstante in 'uConstante.pas',
   uCarro in 'uCarro.pas' {frmCarro},
   uEnumerador in 'uEnumerador.pas',
-  uListarAluguel in 'uListarAluguel.pas' {frmListarAluguel};
+  uListarAluguel in 'uListarAluguel.pas' {frmListarAluguel},
+  uAluguel in 'uAluguel.pas' {frmAluguel};
 
 {$R *.res}
 

@@ -63,6 +63,8 @@ object frmListarAluguel: TfrmListarAluguel
       Caption = '&Editar'
       TabOrder = 1
       OnClick = btnEditarClick
+      ExplicitLeft = 548
+      ExplicitTop = 6
     end
     object btnInserir: TButton
       Left = 473

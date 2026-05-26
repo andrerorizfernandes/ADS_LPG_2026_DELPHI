@@ -41,19 +41,19 @@ implementation
 {$R *.dfm}
 
 uses
-  uLib;
-//  uAluguel;
+  uLib,
+  uAluguel;
 
 procedure TfrmListarAluguel.AbrirCadastro(const Acao: TAcao);
 begin
-{  var TelaAluguel := TfrmAluguel.Create(nil);
+  var TelaAluguel := TfrmAluguel.Create(nil);
   try
     TelaAluguel.TipoAcao := Acao;
     TelaAluguel.ShowModal;
     ControleBotoes;
   finally
     TelaAluguel.Free;
-  end;}
+  end;
 end;
 
 procedure TfrmListarAluguel.AbrirEstrutura;
