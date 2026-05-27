@@ -1,4 +1,5 @@
 object DM: TDM
+  OnCreate = DataModuleCreate
   Height = 480
   Width = 640
   object dsrCarro: TDataSource
@@ -7,14 +8,6 @@ object DM: TDM
     Top = 104
   end
   object Conexao: TFDConnection
-    Params.Strings = (
-      
-        'Database=C:\Users\Andre Roriz\Downloads\ADS_LPG_2026_DELPHI\Loja' +
-        '\database\LOJA.FDB'
-      'User_Name=SYSDBA'
-      'Password=18071988'
-      'DriverID=FB')
-    Connected = True
     LoginPrompt = False
     Left = 48
     Top = 32
