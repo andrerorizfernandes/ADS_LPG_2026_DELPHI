@@ -106,7 +106,7 @@ const
   MENSAGEM_CONFIRMACAO = 'Deseja realmente excluir o aluguel %s?';
 begin
   if (not Pergunta(Format(MENSAGEM_CONFIRMACAO, [
-    DM.qryAluguelCODIGOALUGUEL.Value]))) then
+    DM.qryAluguelCODIGOALUGUEL.AsString]))) then
     Exit;
 
   DM.qryAluguel.Edit;
