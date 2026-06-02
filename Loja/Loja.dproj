@@ -152,6 +152,7 @@
             <Form>frmAluguel</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="uEnvConfig.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

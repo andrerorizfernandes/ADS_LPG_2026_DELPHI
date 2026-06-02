@@ -10,7 +10,8 @@ uses
   uCarro in 'uCarro.pas' {frmCarro},
   uEnumerador in 'uEnumerador.pas',
   uListarAluguel in 'uListarAluguel.pas' {frmListarAluguel},
-  uAluguel in 'uAluguel.pas' {frmAluguel};
+  uAluguel in 'uAluguel.pas' {frmAluguel},
+  uEnvConfig in 'uEnvConfig.pas';
 
 {$R *.res}
 

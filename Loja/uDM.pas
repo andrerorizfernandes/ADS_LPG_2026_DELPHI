@@ -9,7 +9,7 @@ uses
   FireDAC.Phys, FireDAC.VCLUI.Wait, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
-  EnvConfig;
+  uEnvConfig;
 
 type
   TDM = class(TDataModule)
@@ -58,6 +58,7 @@ var
 implementation
 
 uses
+  System.UITypes,
   Vcl.Forms,
   Vcl.Dialogs;
 
