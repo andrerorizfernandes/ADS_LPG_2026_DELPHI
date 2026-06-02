@@ -40,6 +40,8 @@ type
     qryAluguelPAGO: TBooleanField;
     qryAluguelEXCLUIDO: TBooleanField;
     qryAluguelStatusPagamento: TStringField;
+    qryUsuarioLogado: TFDQuery;
+    dsrUsuarioLogado: TDataSource;
 
     procedure DataModuleCreate(Sender: TObject);
     procedure qryAluguelCalcFields(DataSet: TDataSet);

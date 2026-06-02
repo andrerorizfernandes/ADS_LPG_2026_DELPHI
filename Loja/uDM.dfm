@@ -185,4 +185,29 @@ object DM: TDM
     Left = 114
     Top = 248
   end
+  object qryUsuarioLogado: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT'
+      #9'u.CODIGO,'
+      #9'u.CPF,'
+      #9'u.NOME,'
+      #9'u.SENHA'
+      'FROM USUARIO u'
+      'WHERE u.CPF =:CPF')
+    Left = 48
+    Top = 328
+    ParamData = <
+      item
+        Name = 'CPF'
+        DataType = ftString
+        ParamType = ptInput
+        Value = Null
+      end>
+  end
+  object dsrUsuarioLogado: TDataSource
+    DataSet = qryUsuarioLogado
+    Left = 112
+    Top = 328
+  end
 end

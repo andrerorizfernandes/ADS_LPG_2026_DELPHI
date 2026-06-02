@@ -11,7 +11,9 @@ uses
   uEnumerador in 'uEnumerador.pas',
   uListarAluguel in 'uListarAluguel.pas' {frmListarAluguel},
   uAluguel in 'uAluguel.pas' {frmAluguel},
-  uEnvConfig in 'uEnvConfig.pas';
+  uEnvConfig in 'uEnvConfig.pas',
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
