@@ -204,6 +204,28 @@ object DM: TDM
         ParamType = ptInput
         Value = Null
       end>
+    object qryUsuarioLogadoCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryUsuarioLogadoCPF: TWideStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      Required = True
+      Size = 11
+    end
+    object qryUsuarioLogadoNOME: TWideStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 50
+    end
+    object qryUsuarioLogadoSENHA: TWideStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Size = 50
+    end
   end
   object dsrUsuarioLogado: TDataSource
     DataSet = qryUsuarioLogado

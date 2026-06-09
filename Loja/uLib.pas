@@ -4,7 +4,8 @@ interface
 
 uses
   System.Types,
-  Vcl.DBGrids, Vcl.Grids, Datasnap.DBClient;
+  Vcl.DBGrids, Vcl.Grids, Datasnap.DBClient, Vcl.ComCtrls, IdHashMessageDigest,
+  FireDAC.Comp.Client;
 
 procedure Alerta(Mensagem: string);
 procedure Informacao(Mensagem: string);
@@ -12,13 +13,17 @@ procedure Erro(Mensagem: string);
 procedure ZebrarGrid(Sender, DataSet: TObject; Rect: TRect; Column: TColumn; State: TGridDrawState);
 function Pergunta(Pergunta: string): Boolean;
 procedure CaracterValido(Tipo: Integer; var key: Char);
+function DadoInvalido(Valor: String; Str: String; Sender: TObject; TabSheet: TTabSheet = nil): Boolean;
+function MD5(const texto:string):string;
+procedure PassarParametro(Query: TFDQuery; Valores: array of variant; AbrirQuery: Boolean = True);
 
 implementation
 
 uses
   Vcl.Forms,
   Winapi.Windows,
-  uConstante, Data.DB, Vcl.Graphics, System.SysUtils;
+  uConstante, Data.DB, Vcl.Graphics, System.SysUtils, Vcl.DBCtrls,
+  Vcl.StdCtrls, Vcl.Mask, System.TypInfo;
 
 procedure Alerta(Mensagem: string);
 begin
@@ -91,6 +96,136 @@ begin
      ((Tipo <> 2) and not CharInSet(key,Caracteres)) then
   begin
     key:= #0;
+  end;
+end;
+
+function DadoInvalido(Valor: String; Str: String; Sender: TObject; TabSheet: TTabSheet = nil): Boolean;
+begin
+  if Trim(Valor) = '' then
+  begin
+    Alerta(Str);
+
+    if TabSheet <> nil then
+      TabSheet.Show;
+
+    if Sender is TDBEdit then
+    with Sender as TDBEdit do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TEdit then
+    with Sender as TEdit do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TDBMemo then
+    with Sender as TDBMemo do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TMemo then
+    with Sender as TMemo do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TDBLookupComboBox then
+    with Sender as TDBLookupComboBox do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TDBComboBox then
+    with Sender as TDBComboBox do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TComboBox then
+    with Sender as TComboBox do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TCheckBox then
+    with Sender as TCheckBox do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TDBCheckBox then
+    with Sender as TDBCheckBox do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TDateTimePicker then
+    with Sender as TDateTimePicker do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TDBGrid then
+    with Sender as TDBgrid do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    if Sender is TMaskEdit then
+    with Sender as TMaskEdit do
+    begin
+      SetFocus;
+      Color:= clSkyBlue;
+    end;
+
+    Result:= True;
+  end
+  else
+  begin
+    if (Sender <> nil) and (IsPublishedProp(Sender,'Color')) then
+    SetOrdProp(Sender, 'Color', clWindow);
+
+    result:= false;
+  end;
+end;
+
+function MD5(const texto:string):string;
+begin
+  var idmd5 := TIdHashMessageDigest5.Create;
+  try
+    Result := idmd5.HashStringAsHex(texto);
+  finally
+    idmd5.Free;
+  end;
+end;
+
+Procedure PassarParametro(Query: TFDQuery; Valores: array of variant; AbrirQuery: Boolean = True);
+begin
+  Query.Close;
+  for var I := 0 to Length(Valores) - 1 do
+    Query.Params[I].Value := Valores[I];
+
+  if AbrirQuery then
+  begin
+    try
+      Query.Open;
+    except
+      Alerta('Valor inválido!');
+    end;
   end;
 end;
 end.

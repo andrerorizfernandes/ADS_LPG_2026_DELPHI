@@ -14,6 +14,7 @@ object frmPrincipal: TfrmPrincipal
   Menu = menModulo
   Position = poScreenCenter
   WindowState = wsMaximized
+  OnCreate = FormCreate
   TextHeight = 15
   object menModulo: TMainMenu
     Left = 48

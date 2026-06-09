@@ -42,6 +42,10 @@ type
     qryAluguelStatusPagamento: TStringField;
     qryUsuarioLogado: TFDQuery;
     dsrUsuarioLogado: TDataSource;
+    qryUsuarioLogadoCODIGO: TIntegerField;
+    qryUsuarioLogadoCPF: TWideStringField;
+    qryUsuarioLogadoNOME: TWideStringField;
+    qryUsuarioLogadoSENHA: TWideStringField;
 
     procedure DataModuleCreate(Sender: TObject);
     procedure qryAluguelCalcFields(DataSet: TDataSet);

@@ -18,9 +18,11 @@ type
     Aluguel1: TMenuItem;
     procedure Carro1Click(Sender: TObject);
     procedure Aluguel1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     procedure ExibirCarro;
     procedure ExibirAluguel;
+    procedure Login;
     { Private declarations }
   public
     { Public declarations }
@@ -33,7 +35,8 @@ implementation
 
 uses
   uListarCarro,
-  uListarAluguel;
+  uListarAluguel,
+  uLogin;
 
 {$R *.dfm}
 
@@ -54,6 +57,21 @@ begin
     TelaListarCarro.ShowModal;
   finally
     TelaListarCarro.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.FormCreate(Sender: TObject);
+begin
+  Login;
+end;
+
+procedure TfrmPrincipal.Login;
+begin
+  var TelaLogin := TfrmLogin.Create(nil);
+  try
+    TelaLogin.ShowModal;
+  finally
+    TelaLogin.Free;
   end;
 end;
 

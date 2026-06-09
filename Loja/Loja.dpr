@@ -13,7 +13,8 @@ uses
   uAluguel in 'uAluguel.pas' {frmAluguel},
   uEnvConfig in 'uEnvConfig.pas',
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uLogin in 'uLogin.pas' {frmLogin};
 
 {$R *.res}
 
