@@ -32,6 +32,7 @@ type
     procedure AcionarRecurso(const Key: Char);
     procedure PrepararAmbiente;
     procedure FecharLogin;
+    procedure PreencherDadosLoginAmbienteDev;
 
     { Private declarations }
   public
@@ -158,8 +159,23 @@ end;
 
 procedure TfrmLogin.FormShow(Sender: TObject);
 begin
+  PreencherDadosLoginAmbienteDev;
   PrepararAmbiente;
 end;
+
+procedure TfrmLogin.PreencherDadosLoginAmbienteDev;
+const
+  CPF_TESTE = '18603838070';
+  SENHA_TESTE = '123456';
+  MODO_DEBUG = 1;
+begin
+  if (DebugHook <> MODO_DEBUG) then
+    Exit;
+
+  edtCPF.Text := CPF_TESTE;
+  edtSenha1.Text := SENHA_TESTE;
+end;
+
 procedure TfrmLogin.PrepararAmbiente;
 begin
   FLogou := False;
