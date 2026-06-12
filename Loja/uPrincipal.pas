@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ComCtrls, Vcl.ExtCtrls;
 
 type
   TfrmPrincipal = class(TForm)
@@ -16,13 +16,17 @@ type
     Cidade1: TMenuItem;
     Movimento1: TMenuItem;
     Aluguel1: TMenuItem;
+    stbRodape: TStatusBar;
+    tmrPrincipal: TTimer;
     procedure Carro1Click(Sender: TObject);
     procedure Aluguel1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure tmrPrincipalTimer(Sender: TObject);
   private
     procedure ExibirCarro;
     procedure ExibirAluguel;
     procedure Login;
+    procedure PreencherInformacoesRodape;
     { Private declarations }
   public
     { Public declarations }
@@ -34,6 +38,7 @@ var
 implementation
 
 uses
+  uDM,
   uListarCarro,
   uListarAluguel,
   uLogin;
@@ -73,6 +78,19 @@ begin
   finally
     TelaLogin.Free;
   end;
+end;
+
+procedure TfrmPrincipal.PreencherInformacoesRodape;
+begin
+  stbRodape.Panels[0].Text := 'Data: ' + DateToStr(Date);
+  stbRodape.Panels[1].Text := 'Hora: ' + TimeToStr(Time);
+  stbRodape.Panels[2].Text := 'Cpf: ' + DM.qryUsuarioLogadoCPF.AsString;
+  stbRodape.Panels[3].Text := 'Usuário: ' + DM.qryUsuarioLogadoNOME.AsString;
+end;
+
+procedure TfrmPrincipal.tmrPrincipalTimer(Sender: TObject);
+begin
+  PreencherInformacoesRodape;
 end;
 
 procedure TfrmPrincipal.ExibirAluguel;

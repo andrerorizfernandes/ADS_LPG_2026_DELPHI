@@ -16,6 +16,31 @@ object frmPrincipal: TfrmPrincipal
   WindowState = wsMaximized
   OnCreate = FormCreate
   TextHeight = 15
+  object stbRodape: TStatusBar
+    Left = 0
+    Top = 442
+    Width = 624
+    Height = 19
+    Panels = <
+      item
+        Alignment = taCenter
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        Width = 120
+      end
+      item
+        Width = 50
+      end>
+    ExplicitLeft = 344
+    ExplicitTop = 384
+    ExplicitWidth = 0
+  end
   object menModulo: TMainMenu
     Left = 48
     Top = 40
@@ -42,5 +67,10 @@ object frmPrincipal: TfrmPrincipal
     object Sair1: TMenuItem
       Caption = 'Sair'
     end
+  end
+  object tmrPrincipal: TTimer
+    OnTimer = tmrPrincipalTimer
+    Left = 48
+    Top = 120
   end
 end
