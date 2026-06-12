@@ -22,9 +22,11 @@ type
     procedure Aluguel1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure tmrPrincipalTimer(Sender: TObject);
+    procedure Cidade1Click(Sender: TObject);
   private
     procedure ExibirCarro;
     procedure ExibirAluguel;
+    procedure ExibirUsuario;
     procedure Login;
     procedure PreencherInformacoesRodape;
     { Private declarations }
@@ -41,6 +43,7 @@ uses
   uDM,
   uListarCarro,
   uListarAluguel,
+  uListarUsuario,
   uLogin;
 
 {$R *.dfm}
@@ -55,6 +58,11 @@ begin
   ExibirCarro;
 end;
 
+procedure TfrmPrincipal.Cidade1Click(Sender: TObject);
+begin
+  ExibirUsuario;
+end;
+
 procedure TfrmPrincipal.ExibirCarro;
 begin
   var TelaListarCarro := TfrmListarCarro.Create(nil);
@@ -62,6 +70,16 @@ begin
     TelaListarCarro.ShowModal;
   finally
     TelaListarCarro.Free;
+  end;
+end;
+
+procedure TfrmPrincipal.ExibirUsuario;
+begin
+  var TelaListarUsuario := TfrmListarUsuario.Create(nil);
+  try
+    TelaListarUsuario.ShowModal;
+  finally
+    TelaListarUsuario.Free;
   end;
 end;
 

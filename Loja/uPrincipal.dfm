@@ -51,7 +51,8 @@ object frmPrincipal: TfrmPrincipal
         OnClick = Carro1Click
       end
       object Cidade1: TMenuItem
-        Caption = 'C&liente'
+        Caption = '&Usu'#225'rio'
+        OnClick = Cidade1Click
       end
     end
     object Movimento1: TMenuItem

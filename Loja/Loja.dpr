@@ -14,7 +14,8 @@ uses
   uEnvConfig in 'uEnvConfig.pas',
   Vcl.Themes,
   Vcl.Styles,
-  uLogin in 'uLogin.pas' {frmLogin};
+  uLogin in 'uLogin.pas' {frmLogin},
+  uListarUsuario in 'uListarUsuario.pas' {frmListarUsuario};
 
 {$R *.res}
 

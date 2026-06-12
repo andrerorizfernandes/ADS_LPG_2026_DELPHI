@@ -232,4 +232,56 @@ object DM: TDM
     Left = 112
     Top = 328
   end
+  object qryUsuario: TFDQuery
+    Connection = Conexao
+    SQL.Strings = (
+      'SELECT'
+      '  u.CODIGO,'
+      '  u.CPF,'
+      '  u.NOME,'
+      '  u.SENHA,'
+      '  u.DATAOPERACAO,'
+      '  u.EXCLUIDO'
+      'FROM usuario u'
+      'WHERE u.EXCLUIDO = FALSE')
+    Left = 40
+    Top = 400
+    object qryUsuarioCODIGO: TIntegerField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object qryUsuarioCPF: TWideStringField
+      FieldName = 'CPF'
+      Origin = 'CPF'
+      Required = True
+      Size = 11
+    end
+    object qryUsuarioNOME: TWideStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 50
+    end
+    object qryUsuarioSENHA: TWideStringField
+      FieldName = 'SENHA'
+      Origin = 'SENHA'
+      Size = 50
+    end
+    object qryUsuarioDATAOPERACAO: TSQLTimeStampField
+      FieldName = 'DATAOPERACAO'
+      Origin = 'DATAOPERACAO'
+      Required = True
+    end
+    object qryUsuarioEXCLUIDO: TBooleanField
+      FieldName = 'EXCLUIDO'
+      Origin = 'EXCLUIDO'
+      Required = True
+    end
+  end
+  object dsrUsuario: TDataSource
+    DataSet = qryUsuario
+    Left = 112
+    Top = 400
+  end
 end

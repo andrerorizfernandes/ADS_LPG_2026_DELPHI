@@ -46,6 +46,14 @@ type
     qryUsuarioLogadoCPF: TWideStringField;
     qryUsuarioLogadoNOME: TWideStringField;
     qryUsuarioLogadoSENHA: TWideStringField;
+    qryUsuario: TFDQuery;
+    dsrUsuario: TDataSource;
+    qryUsuarioCODIGO: TIntegerField;
+    qryUsuarioCPF: TWideStringField;
+    qryUsuarioNOME: TWideStringField;
+    qryUsuarioSENHA: TWideStringField;
+    qryUsuarioDATAOPERACAO: TSQLTimeStampField;
+    qryUsuarioEXCLUIDO: TBooleanField;
 
     procedure DataModuleCreate(Sender: TObject);
     procedure qryAluguelCalcFields(DataSet: TDataSet);
