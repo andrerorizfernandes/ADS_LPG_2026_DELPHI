@@ -213,6 +213,7 @@ object DM: TDM
       FieldName = 'CPF'
       Origin = 'CPF'
       Required = True
+      EditMask = '999.999.999-99;0;_'
       Size = 11
     end
     object qryUsuarioLogadoNOME: TWideStringField
@@ -255,6 +256,7 @@ object DM: TDM
       FieldName = 'CPF'
       Origin = 'CPF'
       Required = True
+      EditMask = '999.999.999-99;0;_'
       Size = 11
     end
     object qryUsuarioNOME: TWideStringField
@@ -271,12 +273,10 @@ object DM: TDM
     object qryUsuarioDATAOPERACAO: TSQLTimeStampField
       FieldName = 'DATAOPERACAO'
       Origin = 'DATAOPERACAO'
-      Required = True
     end
     object qryUsuarioEXCLUIDO: TBooleanField
       FieldName = 'EXCLUIDO'
       Origin = 'EXCLUIDO'
-      Required = True
     end
   end
   object dsrUsuario: TDataSource

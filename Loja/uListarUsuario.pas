@@ -41,19 +41,19 @@ implementation
 {$R *.dfm}
 
 uses
-  uLib;
-//  uUsuario;
+  uLib,
+  uUsuario;
 
 procedure TfrmListarUsuario.AbrirCadastro(const Acao: TAcao);
 begin
-{  var TelaUsuario := TfrmUsuario.Create(nil);
+  var TelaUsuario := TfrmUsuario.Create(nil);
   try
     TelaUsuario.TipoAcao := Acao;
     TelaUsuario.ShowModal;
     ControleBotoes;
   finally
     TelaUsuario.Free;
-  end;}
+  end;
 end;
 
 procedure TfrmListarUsuario.AbrirEstrutura;

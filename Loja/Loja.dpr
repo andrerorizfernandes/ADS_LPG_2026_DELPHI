@@ -15,7 +15,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   uLogin in 'uLogin.pas' {frmLogin},
-  uListarUsuario in 'uListarUsuario.pas' {frmListarUsuario};
+  uListarUsuario in 'uListarUsuario.pas' {frmListarUsuario},
+  uUsuario in 'uUsuario.pas' {frmUsuario};
 
 {$R *.res}
 

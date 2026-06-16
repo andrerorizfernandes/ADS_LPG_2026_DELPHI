@@ -16,6 +16,8 @@ procedure CaracterValido(Tipo: Integer; var key: Char);
 function DadoInvalido(Valor: String; Str: String; Sender: TObject; TabSheet: TTabSheet = nil): Boolean;
 function MD5(const texto:string):string;
 procedure PassarParametro(Query: TFDQuery; Valores: array of variant; AbrirQuery: Boolean = True);
+function ValidaCPF(numero : string): Boolean;
+function ConfirmacaoSenha(const Senha, Confirmacao: string): Boolean;
 
 implementation
 
@@ -227,5 +229,88 @@ begin
       Alerta('Valor inválido!');
     end;
   end;
+end;
+
+Function ValidaCPF(numero : string): Boolean;
+var
+  i               : integer;
+  Want            : char;
+  Wvalid          : boolean;
+  Wdigit1,Wdigit2 : integer;
+begin
+  if numero.IsEmpty then
+  begin
+    result:= false;
+    exit;
+  end;
+  Wvalid:= False;
+  Wdigit1:= 0;
+  Wdigit2:= 0;
+  Want:= numero[1];//variavel para testar se o cpf é repetido como 111.111.111-11
+  Delete(numero,ansipos('.',numero),1); //retira as mascaras se houver
+  Delete(numero,ansipos('.',numero),1);
+  Delete(numero,ansipos('-',numero),1);
+
+  //testar se o cpf é repetido como 111.111.111-11
+  for i:=1 to length(numero) do
+  begin
+    if numero[i] <> Want then
+    begin
+      Wvalid:=true; // se o cpf possui um digito diferente ele passou no primeiro teste
+      break;
+    end;
+  end;
+  // se o cpf é composto por numeros repetido retorna falso
+  if not Wvalid then
+  begin
+    result:=false;
+    exit;
+  end;
+
+  //executa o calculo para o primeiro verificador
+  for i:=1 to 9 do
+  begin
+    wdigit1:=Wdigit1+(strtoint(numero[10-i])*(I+1));
+  end;
+  Wdigit1:= ((11 - (Wdigit1 mod 11))mod 11) mod 10;
+  {formula do primeiro verificador
+  soma=1°*2+2°*3+3°*4.. até 9°*10
+  digito1 = 11 - soma mod 11
+  se digito > 10 digito1 =0}
+
+  //verifica se o 1° digito confere
+  if IntToStr(Wdigit1) <> numero[10] then
+  begin
+    result:=false;
+    exit;
+  end;
+
+  for i:=1 to 10 do
+  begin
+    wdigit2:=Wdigit2+(strtoint(numero[11-i])*(I+1));
+  end;
+  Wdigit2:= ((11 - (Wdigit2 mod 11))mod 11) mod 10;
+  {formula do segundo verificador
+  soma=1°*2+2°*3+3°*4.. até 10°*11
+  digito1 = 11 - soma mod 11
+  se digito > 10 digito1 =0}
+
+  // confere o 2° digito verificador
+  if IntToStr(Wdigit2) <> numero[11] then
+  begin
+    result:=false;
+    exit;
+  end;
+
+  //se chegar até aqui o cpf é valido
+  result:=true;
+end;
+
+function ConfirmacaoSenha(const Senha, Confirmacao: string): Boolean;
+begin
+  if Senha.Trim.IsEmpty or Confirmacao.Trim.IsEmpty then
+    Exit(False);
+
+  Result := Senha.Equals(Confirmacao);
 end;
 end.
