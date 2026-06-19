@@ -25,14 +25,17 @@ type
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure dbeCpfKeyPress(Sender: TObject; var Key: Char);
+    procedure dbeSenhaExit(Sender: TObject);
   private
     var
-    FAcao: TAcao;
+      FAcao: TAcao;
+      FExigirConfirmacaoSenha: Boolean;
 
     procedure PrepararAmbiente;
     procedure ValidarDados;
     procedure Gravar;
     procedure Cancelar;
+    procedure ControlarVisibilidadeDaConfirmacaoDeSenha(const pHabilitar: Boolean);
     { Private declarations }
   public
     property TipoAcao: TAcao write FAcao;
@@ -46,7 +49,7 @@ implementation
 
 {$R *.dfm}
 
-uses uConstante, uDM, uLib;
+uses uConstante, uDM, uLib, Data.DB;
 
 procedure TfrmUsuario.btnCancelarClick(Sender: TObject);
 begin
@@ -63,6 +66,7 @@ end;
 procedure TfrmUsuario.FormActivate(Sender: TObject);
 begin
   PrepararAmbiente;
+  ControlarVisibilidadeDaConfirmacaoDeSenha(FAcao = tacInserir);
 end;
 
 procedure TfrmUsuario.PrepararAmbiente;
@@ -104,11 +108,17 @@ begin
     Abort;
   end;
 
-  if (not ConfirmacaoSenha(DM.qryUsuarioSENHA.AsString, edtConfirmarSenha.Text)) then
+  if FExigirConfirmacaoSenha then
   begin
-    Alerta('As senhas informadas são diferentes');
-    edtConfirmarSenha.SetFocus;
-    Abort;
+    if DadoInvalido(edtConfirmarSenha.Text, 'Confirme a senha', edtConfirmarSenha) then
+      Abort;
+
+    if (not ConfirmacaoSenha(DM.qryUsuarioSENHA.AsString, edtConfirmarSenha.Text)) then
+    begin
+      Alerta('As senhas informadas são diferentes');
+      edtConfirmarSenha.SetFocus;
+      Abort;
+    end;
   end;
 end;
 
@@ -135,5 +145,30 @@ end;
 procedure TfrmUsuario.dbeCpfKeyPress(Sender: TObject; var Key: Char);
 begin
   CaracterValido(SOMENTE_NUMEROS, Key);
+end;
+
+procedure TfrmUsuario.dbeSenhaExit(Sender: TObject);
+begin
+  var lHabilitar :=
+    (FAcao = tacInserir) or
+    (FAcao = tacEditar) and (dbeSenha.Field.Value <> dbeSenha.Field.OldValue);
+
+  ControlarVisibilidadeDaConfirmacaoDeSenha(lHabilitar);
+end;
+
+procedure TfrmUsuario.ControlarVisibilidadeDaConfirmacaoDeSenha(const pHabilitar: Boolean);
+begin
+  if pHabilitar then
+  begin
+    lblConfirmarSenha.Enabled := True;
+    edtConfirmarSenha.Enabled := True;
+    FExigirConfirmacaoSenha := True;
+    Exit;
+  end;
+
+  lblConfirmarSenha.Enabled := False;
+  edtConfirmarSenha.Enabled := False;
+  edtConfirmarSenha.Clear;
+  FExigirConfirmacaoSenha := False;
 end;
 end.

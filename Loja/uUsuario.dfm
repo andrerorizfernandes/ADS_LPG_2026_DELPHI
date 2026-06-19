@@ -27,8 +27,6 @@ object frmUsuario: TfrmUsuario
     Padding.Right = 1
     Padding.Bottom = 1
     TabOrder = 0
-    ExplicitTop = 88
-    ExplicitWidth = 599
     object btnCancelar: TButton
       Left = 640
       Top = 3
@@ -38,7 +36,6 @@ object frmUsuario: TfrmUsuario
       Caption = '&Cancelar'
       TabOrder = 1
       OnClick = btnCancelarClick
-      ExplicitLeft = 510
     end
     object btnGravar: TButton
       Left = 554
@@ -49,7 +46,6 @@ object frmUsuario: TfrmUsuario
       Caption = '&Gravar'
       TabOrder = 0
       OnClick = btnGravarClick
-      ExplicitLeft = 424
     end
   end
   object pnlUsuario: TPanel
@@ -59,9 +55,6 @@ object frmUsuario: TfrmUsuario
     Height = 73
     Align = alClient
     TabOrder = 1
-    ExplicitTop = -3
-    ExplicitWidth = 599
-    ExplicitHeight = 166
     object lblCpf: TLabel
       Left = 8
       Top = 16
@@ -118,6 +111,7 @@ object frmUsuario: TfrmUsuario
       DataSource = DM.dsrUsuario
       PasswordChar = '*'
       TabOrder = 2
+      OnExit = dbeSenhaExit
     end
     object edtConfirmarSenha: TEdit
       Left = 600
